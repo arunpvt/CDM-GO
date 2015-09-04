@@ -12,13 +12,25 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    var isLoggedIn : Bool = false
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        var storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        if (isLoggedIn)
+        {
+            var controller :UIViewController = storyBoard.instantiateViewControllerWithIdentifier("ProjectViewController") as! UIViewController
+            var navController :UINavigationController = UINavigationController(rootViewController: controller)
+            self.window?.rootViewController = navController
+        }
+        else
+        {
+             var controller :UIViewController = storyBoard.instantiateViewControllerWithIdentifier("ViewController") as! UIViewController
+            self.window?.rootViewController = controller
+        }
         return true
     }
-
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -39,6 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
+        var project :[Project] = ProjectsViewController.sampleData()
+       
+        if let type = userInfo!["Project"] as? String
+        {
+            if(type == "get")
+            {
+                println("calling function")
+                reply(["project" : project])
+            }
+        }
     }
 
 

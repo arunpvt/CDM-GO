@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B36FFF41B972B980004A772 /* ProjectDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36FFF31B972B980004A772 /* ProjectDetailsController.swift */; };
+		8B36FFF81B97314F0004A772 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36FFF61B97314F0004A772 /* Project.swift */; };
+		8B36FFF91B97314F0004A772 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36FFF71B97314F0004A772 /* Projects.swift */; };
+		8B4B06C11B9716EF00873C5A /* ProjectTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B06C01B9716EF00873C5A /* ProjectTableRow.swift */; };
+		8B657B721B99F7140031E548 /* AutoCoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B657B711B99F7140031E548 /* AutoCoded.swift */; };
 		8B69E5101B8F73F900E82C5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B69E50F1B8F73F900E82C5F /* AppDelegate.swift */; };
 		8B69E5121B8F73F900E82C5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B69E5111B8F73F900E82C5F /* ViewController.swift */; };
 		8B69E5151B8F73F900E82C5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B69E5131B8F73F900E82C5F /* Main.storyboard */; };
@@ -21,6 +26,13 @@
 		8B69E54B1B8F742900E82C5F /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B69E5491B8F742900E82C5F /* Interface.storyboard */; };
 		8B69E54D1B8F742900E82C5F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B69E54C1B8F742900E82C5F /* Images.xcassets */; };
 		8B69E5501B8F742900E82C5F /* CDM Go WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8B69E5331B8F742800E82C5F /* CDM Go WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B6CFE0A1B9038AE003ECE47 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE091B9038AE003ECE47 /* Projects.swift */; };
+		8B6CFE0C1B9038C1003ECE47 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE0B1B9038C1003ECE47 /* Project.swift */; };
+		8B6CFE121B904492003ECE47 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE111B904492003ECE47 /* ProjectsViewController.swift */; };
+		8B6CFE141B9060D2003ECE47 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */; };
+		8B9EE6951B9A226E00FFC356 /* ProjectDetailListItemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */; };
+		8B9EE6971B9A229700FFC356 /* ProjectDetailListTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */; };
+		8BF6AE7D1B9438F300E88379 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6AE7C1B9438F300E88379 /* ProjectDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +74,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8B36FFF31B972B980004A772 /* ProjectDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsController.swift; sourceTree = "<group>"; };
+		8B36FFF61B97314F0004A772 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		8B36FFF71B97314F0004A772 /* Projects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
+		8B4B06C01B9716EF00873C5A /* ProjectTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableRow.swift; sourceTree = "<group>"; };
+		8B657B711B99F7140031E548 /* AutoCoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCoded.swift; sourceTree = "<group>"; };
 		8B69E50A1B8F73F900E82C5F /* CDM Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CDM Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B69E50E1B8F73F900E82C5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B69E50F1B8F73F900E82C5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +100,13 @@
 		8B69E5481B8F742900E82C5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B69E54A1B8F742900E82C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		8B69E54C1B8F742900E82C5F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		8B6CFE091B9038AE003ECE47 /* Projects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
+		8B6CFE0B1B9038C1003ECE47 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		8B6CFE111B904492003ECE47 /* ProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
+		8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
+		8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailListItemsRow.swift; sourceTree = "<group>"; };
+		8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailListTitleRow.swift; sourceTree = "<group>"; };
+		8BF6AE7C1B9438F300E88379 /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,9 +134,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B36FFF51B97314F0004A772 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B36FFF61B97314F0004A772 /* Project.swift */,
+				8B36FFF71B97314F0004A772 /* Projects.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		8B69E5011B8F73F900E82C5F = {
 			isa = PBXGroup;
 			children = (
+				8B6CFE081B903891003ECE47 /* Model */,
 				8B69E50C1B8F73F900E82C5F /* CDM Go */,
 				8B69E5221B8F73F900E82C5F /* CDM GoTests */,
 				8B69E5341B8F742800E82C5F /* CDM Go WatchKit Extension */,
@@ -137,6 +171,9 @@
 			children = (
 				8B69E50F1B8F73F900E82C5F /* AppDelegate.swift */,
 				8B69E5111B8F73F900E82C5F /* ViewController.swift */,
+				8B6CFE111B904492003ECE47 /* ProjectsViewController.swift */,
+				8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */,
+				8BF6AE7C1B9438F300E88379 /* ProjectDetailsViewController.swift */,
 				8B69E5131B8F73F900E82C5F /* Main.storyboard */,
 				8B69E5161B8F73F900E82C5F /* Images.xcassets */,
 				8B69E5181B8F73F900E82C5F /* LaunchScreen.xib */,
@@ -174,10 +211,15 @@
 			isa = PBXGroup;
 			children = (
 				8B69E5381B8F742900E82C5F /* InterfaceController.swift */,
+				8B4B06C01B9716EF00873C5A /* ProjectTableRow.swift */,
+				8B36FFF31B972B980004A772 /* ProjectDetailsController.swift */,
 				8B69E53A1B8F742900E82C5F /* NotificationController.swift */,
 				8B69E53C1B8F742900E82C5F /* GlanceController.swift */,
 				8B69E53E1B8F742900E82C5F /* Images.xcassets */,
+				8B36FFF51B97314F0004A772 /* Model */,
 				8B69E5351B8F742900E82C5F /* Supporting Files */,
+				8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */,
+				8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */,
 			);
 			path = "CDM Go WatchKit Extension";
 			sourceTree = "<group>";
@@ -207,6 +249,16 @@
 				8B69E5481B8F742900E82C5F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8B6CFE081B903891003ECE47 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B6CFE091B9038AE003ECE47 /* Projects.swift */,
+				8B6CFE0B1B9038C1003ECE47 /* Project.swift */,
+				8B657B711B99F7140031E548 /* AutoCoded.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +355,7 @@
 					};
 					8B69E5411B8F742900E82C5F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = AB6YA7P755;
 					};
 				};
 			};
@@ -370,8 +423,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B6CFE0A1B9038AE003ECE47 /* Projects.swift in Sources */,
+				8B6CFE121B904492003ECE47 /* ProjectsViewController.swift in Sources */,
+				8B657B721B99F7140031E548 /* AutoCoded.swift in Sources */,
+				8B6CFE141B9060D2003ECE47 /* ProjectTableCell.swift in Sources */,
 				8B69E5121B8F73F900E82C5F /* ViewController.swift in Sources */,
+				8BF6AE7D1B9438F300E88379 /* ProjectDetailsViewController.swift in Sources */,
 				8B69E5101B8F73F900E82C5F /* AppDelegate.swift in Sources */,
+				8B6CFE0C1B9038C1003ECE47 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,9 +446,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B36FFF91B97314F0004A772 /* Projects.swift in Sources */,
 				8B69E53B1B8F742900E82C5F /* NotificationController.swift in Sources */,
+				8B9EE6951B9A226E00FFC356 /* ProjectDetailListItemsRow.swift in Sources */,
 				8B69E5391B8F742900E82C5F /* InterfaceController.swift in Sources */,
+				8B36FFF41B972B980004A772 /* ProjectDetailsController.swift in Sources */,
 				8B69E53D1B8F742900E82C5F /* GlanceController.swift in Sources */,
+				8B9EE6971B9A229700FFC356 /* ProjectDetailListTitleRow.swift in Sources */,
+				8B4B06C11B9716EF00873C5A /* ProjectTableRow.swift in Sources */,
+				8B36FFF81B97314F0004A772 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +523,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dominic Savio (B6MERE7MVK)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -502,6 +568,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ObjectFrontier Inc";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -526,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Dominic Savio (B6MERE7MVK)";
 				INFOPLIST_FILE = "CDM Go/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -537,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: ObjectFrontier Inc";
 				INFOPLIST_FILE = "CDM Go/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -582,6 +651,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -590,6 +661,7 @@
 				INFOPLIST_FILE = "CDM Go WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -600,10 +672,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				IBSC_MODULE = CDM_Go_WatchKit_Extension;
 				INFOPLIST_FILE = "CDM Go WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
@@ -655,6 +730,7 @@
 				8B69E52B1B8F73F900E82C5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B69E52C1B8F73F900E82C5F /* Build configuration list for PBXNativeTarget "CDM GoTests" */ = {
 			isa = XCConfigurationList;
@@ -663,6 +739,7 @@
 				8B69E52E1B8F73F900E82C5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B69E5511B8F742900E82C5F /* Build configuration list for PBXNativeTarget "CDM Go WatchKit App" */ = {
 			isa = XCConfigurationList;
@@ -671,6 +748,7 @@
 				8B69E5531B8F742900E82C5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8B69E5541B8F742900E82C5F /* Build configuration list for PBXNativeTarget "CDM Go WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -679,6 +757,7 @@
 				8B69E5561B8F742900E82C5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
