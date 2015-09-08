@@ -87,8 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             if(type == "get")
             {
-                if(self.projects != nil)
+                if(self.userID != nil)
                 {
+                    self.projects = syncData()                    
                     reply(["project" : self.projects])
                 }
                 else
@@ -115,6 +116,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func showErrorAlertMessage()
     {
         var alert = UIAlertView(title: "Projects", message: "Some Error had incurred", delegate: self, cancelButtonTitle: "OK")
+    }
+    static func getActivityIndicator(uiView: UIView) -> UIActivityIndicatorView
+    {
+        var actInd: UIActivityIndicatorView = UIActivityIndicatorView()
+        actInd.frame = CGRectMake(0.0, 0.0, 40.0, 40.0);
+        actInd.center = uiView.center
+        actInd.hidesWhenStopped = true
+        actInd.activityIndicatorViewStyle =
+            UIActivityIndicatorViewStyle.WhiteLarge
+        uiView.addSubview(actInd)
+        actInd.startAnimating()
+        return actInd
     }
 }
 

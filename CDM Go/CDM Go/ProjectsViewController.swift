@@ -26,12 +26,9 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         
         self.navigationController?.navigationBarHidden = true
         var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let responseString: AnyObject? = appDelegate.syncData()
-        if(responseString != nil)
-        {
-            projects = InvokeService.deserializeJsonObject(responseString!)
-            appDelegate.projects = responseString
-        }
+        let responseData = appDelegate.syncData() as! NSData
+        self.projects = InvokeService.deserializeJsonObject(responseData)
+
     }
       
     override func didReceiveMemoryWarning() {

@@ -22,7 +22,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var WaitingResAcitivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var WaitingForResponsView: UIView!
-    
+    private var appDelegate : AppDelegate!
     private var isValid :Bool = false
     private var IsUserDataStorageSet : Bool!
     private var hasUser : Bool!
@@ -33,6 +33,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         emailIdTextField.delegate = self;
         userNameTextField.delegate = self;
+        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
        
     }
 
@@ -77,7 +78,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
 
         if(!notifyError(userNameTextField, error: nil) && !notifyError(emailIdTextField, error: nil) && !validateEmailRegex(emailIdTextField))
         {
-            
+            var indicator :UIActivityIndicatorView = AppDelegate.getActivityIndicator(self.view)
             let (userId,userStatus, status) = InvokeService.getUser(self.userNameTextField.text, emailAddress: emailIdTextField.text)
             if(userId != nil)
             {
@@ -90,6 +91,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
                     
                 }
             }
+            indicator.stopAnimating()
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
             
             
