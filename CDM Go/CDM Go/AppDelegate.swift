@@ -126,7 +126,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         actInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.WhiteLarge
         uiView.addSubview(actInd)
-        actInd.startAnimating()
         return actInd
     }
 }

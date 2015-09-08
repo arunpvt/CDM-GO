@@ -18,7 +18,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var emailIdView: UIView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     var userInformationStorage : NSUserDefaults!
-    
+    var activityIndicator :UIActivityIndicatorView!
     @IBOutlet weak var WaitingResAcitivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var WaitingForResponsView: UIView!
@@ -26,7 +26,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
     private var isValid :Bool = false
     private var IsUserDataStorageSet : Bool!
     private var hasUser : Bool!
-    private let approvalWaitingMessage = "Submitted for Admin Approval, Wait for 24 Hours"
+    private let approvalWaitingMessage = "Submitted for Admin Approval, Please contact admin"
     private let rejectedMessage = "Registration is rejected contact your administrator"
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         emailIdTextField.delegate = self;
         userNameTextField.delegate = self;
         appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-       
+        activityIndicator = AppDelegate.getActivityIndicator(self.view)
     }
 
     override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
@@ -46,10 +46,14 @@ class ViewController: UIViewController,UITextFieldDelegate {
         userInformationStorage = NSUserDefaults.standardUserDefaults()
         if let userName: String = userInformationStorage.objectForKey(InvokeService.USERNAMEJSONKEY) as? String
         {
+            self.activityIndicator.startAnimating()
+            self.view.userInteractionEnabled = false
             IsUserDataStorageSet = true
             userNameTextField.text = userName
             emailIdTextField.text = userInformationStorage.objectForKey(InvokeService.USEREMAILJSONKEY) as! String
             let (userId, userStatus , status) = InvokeService.getUser( userNameTextField.text, emailAddress: emailIdTextField.text)
+            self.activityIndicator.stopAnimating()
+            self.view.userInteractionEnabled = true
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
         }
         else
@@ -78,7 +82,8 @@ class ViewController: UIViewController,UITextFieldDelegate {
 
         if(!notifyError(userNameTextField, error: nil) && !notifyError(emailIdTextField, error: nil) && !validateEmailRegex(emailIdTextField))
         {
-            var indicator :UIActivityIndicatorView = AppDelegate.getActivityIndicator(self.view)
+            self.activityIndicator.startAnimating()
+            self.view.userInteractionEnabled = false
             let (userId,userStatus, status) = InvokeService.getUser(self.userNameTextField.text, emailAddress: emailIdTextField.text)
             if(userId != nil)
             {
@@ -91,10 +96,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
                     
                 }
             }
-            indicator.stopAnimating()
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
-            
-            
+            self.activityIndicator.stopAnimating()
+            self.view.userInteractionEnabled = true
         }
        
     }

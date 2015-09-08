@@ -10,7 +10,7 @@ import UIKit
 
 class ProjectsViewController: UIViewController , UITableViewDataSource,UITableViewDelegate{
         var projects : [Project] = [Project]()
-    
+    var activityIndicator : UIActivityIndicatorView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var projectTableView: UITableView!
     override func viewDidLoad() {
@@ -20,14 +20,16 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         self.automaticallyAdjustsScrollViewInsets = false
         self.projectTableView.tableFooterView = UIView()
         self.projectTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-               // Do any additional setup after loading the view, typically from a nib.
+        activityIndicator = AppDelegate.getActivityIndicator(self.view)       // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = true
         var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let responseData = appDelegate.syncData() as! NSData
+        activityIndicator.startAnimating()
+        let responseData :AnyObject! = appDelegate.syncData()
         self.projects = InvokeService.deserializeJsonObject(responseData)
+        activityIndicator.stopAnimating()
 
     }
       

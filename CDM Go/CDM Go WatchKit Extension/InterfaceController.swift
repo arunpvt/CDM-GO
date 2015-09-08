@@ -36,7 +36,10 @@ class InterfaceController: WKInterfaceController {
                  {
                     if (projectDetails  == "Failure")
                     {
-                       self.groupRegister!.setHidden(false)
+                        if(self.groupRegister != nil)
+                        {
+                            self.groupRegister!.setHidden(false)
+                        }
                     }
                  }
                 else
