@@ -10,6 +10,7 @@
 		8B36FFF41B972B980004A772 /* ProjectDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36FFF31B972B980004A772 /* ProjectDetailsController.swift */; };
 		8B36FFF81B97314F0004A772 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36FFF61B97314F0004A772 /* Project.swift */; };
 		8B36FFF91B97314F0004A772 /* Projects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B36FFF71B97314F0004A772 /* Projects.swift */; };
+		8B4161A01B9EBFF200077D91 /* InvokeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B41619F1B9EBFF200077D91 /* InvokeService.swift */; };
 		8B4B06C11B9716EF00873C5A /* ProjectTableRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B06C01B9716EF00873C5A /* ProjectTableRow.swift */; };
 		8B657B721B99F7140031E548 /* AutoCoded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B657B711B99F7140031E548 /* AutoCoded.swift */; };
 		8B69E5101B8F73F900E82C5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B69E50F1B8F73F900E82C5F /* AppDelegate.swift */; };
@@ -32,7 +33,6 @@
 		8B6CFE141B9060D2003ECE47 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */; };
 		8B8793851B9C869C0020DB5E /* ServiceInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8793831B9C869C0020DB5E /* ServiceInvoker.swift */; };
 		8B8793861B9C869C0020DB5E /* ServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8793841B9C869C0020DB5E /* ServiceResponse.swift */; };
-		8B8793881B9D6CB40020DB5E /* InvokeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8793871B9D6CB40020DB5E /* InvokeService.swift */; };
 		8B9EE6951B9A226E00FFC356 /* ProjectDetailListItemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */; };
 		8B9EE6971B9A229700FFC356 /* ProjectDetailListTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */; };
 		8BA672B41B9E3AB90024800A /* FeaturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA672B31B9E3AB90024800A /* FeaturesController.swift */; };
@@ -81,6 +81,8 @@
 		8B36FFF31B972B980004A772 /* ProjectDetailsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsController.swift; sourceTree = "<group>"; };
 		8B36FFF61B97314F0004A772 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		8B36FFF71B97314F0004A772 /* Projects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Projects.swift; sourceTree = "<group>"; };
+		8B4161961B9AFFF700077D91 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		8B41619F1B9EBFF200077D91 /* InvokeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvokeService.swift; sourceTree = "<group>"; };
 		8B4B06C01B9716EF00873C5A /* ProjectTableRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableRow.swift; sourceTree = "<group>"; };
 		8B657B711B99F7140031E548 /* AutoCoded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoCoded.swift; sourceTree = "<group>"; };
 		8B69E50A1B8F73F900E82C5F /* CDM Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CDM Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +112,6 @@
 		8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
 		8B8793831B9C869C0020DB5E /* ServiceInvoker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceInvoker.swift; sourceTree = "<group>"; };
 		8B8793841B9C869C0020DB5E /* ServiceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResponse.swift; sourceTree = "<group>"; };
-		8B8793871B9D6CB40020DB5E /* InvokeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvokeService.swift; sourceTree = "<group>"; };
 		8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailListItemsRow.swift; sourceTree = "<group>"; };
 		8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailListTitleRow.swift; sourceTree = "<group>"; };
 		8BA672B31B9E3AB90024800A /* FeaturesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesController.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		8B69E50C1B8F73F900E82C5F /* CDM Go */ = {
 			isa = PBXGroup;
 			children = (
+				8B41619F1B9EBFF200077D91 /* InvokeService.swift */,
 				8B69E50F1B8F73F900E82C5F /* AppDelegate.swift */,
 				8B69E5111B8F73F900E82C5F /* ViewController.swift */,
 				8B6CFE111B904492003ECE47 /* ProjectsViewController.swift */,
@@ -187,7 +189,7 @@
 				8B69E5161B8F73F900E82C5F /* Images.xcassets */,
 				8B69E5181B8F73F900E82C5F /* LaunchScreen.xib */,
 				8B69E50D1B8F73F900E82C5F /* Supporting Files */,
-				8B8793871B9D6CB40020DB5E /* InvokeService.swift */,
+				8B4161961B9AFFF700077D91 /* Header.h */,
 			);
 			path = "CDM Go";
 			sourceTree = "<group>";
@@ -375,7 +377,6 @@
 					};
 					8B69E5411B8F742900E82C5F = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = AB6YA7P755;
 					};
 				};
 			};
@@ -446,10 +447,10 @@
 				8B6CFE0A1B9038AE003ECE47 /* Projects.swift in Sources */,
 				8B6CFE121B904492003ECE47 /* ProjectsViewController.swift in Sources */,
 				8B657B721B99F7140031E548 /* AutoCoded.swift in Sources */,
-				8B8793881B9D6CB40020DB5E /* InvokeService.swift in Sources */,
 				8B6CFE141B9060D2003ECE47 /* ProjectTableCell.swift in Sources */,
 				8B69E5121B8F73F900E82C5F /* ViewController.swift in Sources */,
 				8B8793851B9C869C0020DB5E /* ServiceInvoker.swift in Sources */,
+				8B4161A01B9EBFF200077D91 /* InvokeService.swift in Sources */,
 				8BF6AE7D1B9438F300E88379 /* ProjectDetailsViewController.swift in Sources */,
 				8B69E5101B8F73F900E82C5F /* AppDelegate.swift in Sources */,
 				8B8793861B9C869C0020DB5E /* ServiceResponse.swift in Sources */,
@@ -617,11 +618,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Dominic Savio (B6MERE7MVK)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Senthil Madhvan (N5987U8683)";
 				INFOPLIST_FILE = "CDM Go/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CDM",
+					Go/libpushwizard,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/Work/dev/POC/CDM-GO/CDM Go/CDM Go/Header.h";
 			};
 			name = Debug;
 		};
@@ -629,11 +636,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: ObjectFrontier Inc";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CLINE DAVIS & MANN LLC";
 				INFOPLIST_FILE = "CDM Go/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CDM",
+					Go/libpushwizard,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/Work/dev/POC/CDM-GO/CDM Go/CDM Go/Header.h";
 			};
 			name = Release;
 		};
@@ -641,6 +654,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Senthil Madhvan (N5987U8683)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -660,6 +674,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CLINE DAVIS & MANN LLC";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -675,8 +690,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Senthil Madhvan (N5987U8683)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -696,8 +710,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CLINE DAVIS & MANN LLC";
 				IBSC_MODULE = CDM_Go_WatchKit_Extension;
 				INFOPLIST_FILE = "CDM Go WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
@@ -712,6 +725,7 @@
 		8B69E5551B8F742900E82C5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Senthil Madhvan (N5987U8683)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -720,6 +734,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -727,10 +742,12 @@
 		8B69E5561B8F742900E82C5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CLINE DAVIS & MANN LLC";
 				INFOPLIST_FILE = "CDM Go WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
