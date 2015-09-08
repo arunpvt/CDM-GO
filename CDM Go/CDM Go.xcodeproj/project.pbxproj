@@ -30,8 +30,12 @@
 		8B6CFE0C1B9038C1003ECE47 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE0B1B9038C1003ECE47 /* Project.swift */; };
 		8B6CFE121B904492003ECE47 /* ProjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE111B904492003ECE47 /* ProjectsViewController.swift */; };
 		8B6CFE141B9060D2003ECE47 /* ProjectTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */; };
+		8B8793851B9C869C0020DB5E /* ServiceInvoker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8793831B9C869C0020DB5E /* ServiceInvoker.swift */; };
+		8B8793861B9C869C0020DB5E /* ServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8793841B9C869C0020DB5E /* ServiceResponse.swift */; };
+		8B8793881B9D6CB40020DB5E /* InvokeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8793871B9D6CB40020DB5E /* InvokeService.swift */; };
 		8B9EE6951B9A226E00FFC356 /* ProjectDetailListItemsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */; };
 		8B9EE6971B9A229700FFC356 /* ProjectDetailListTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */; };
+		8BA672B41B9E3AB90024800A /* FeaturesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA672B31B9E3AB90024800A /* FeaturesController.swift */; };
 		8BF6AE7D1B9438F300E88379 /* ProjectDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF6AE7C1B9438F300E88379 /* ProjectDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,8 +108,12 @@
 		8B6CFE0B1B9038C1003ECE47 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		8B6CFE111B904492003ECE47 /* ProjectsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectsViewController.swift; sourceTree = "<group>"; };
 		8B6CFE131B9060D2003ECE47 /* ProjectTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectTableCell.swift; sourceTree = "<group>"; };
+		8B8793831B9C869C0020DB5E /* ServiceInvoker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceInvoker.swift; sourceTree = "<group>"; };
+		8B8793841B9C869C0020DB5E /* ServiceResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceResponse.swift; sourceTree = "<group>"; };
+		8B8793871B9D6CB40020DB5E /* InvokeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvokeService.swift; sourceTree = "<group>"; };
 		8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailListItemsRow.swift; sourceTree = "<group>"; };
 		8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailListTitleRow.swift; sourceTree = "<group>"; };
+		8BA672B31B9E3AB90024800A /* FeaturesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturesController.swift; sourceTree = "<group>"; };
 		8BF6AE7C1B9438F300E88379 /* ProjectDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -147,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				8B6CFE081B903891003ECE47 /* Model */,
+				8B8793821B9C869C0020DB5E /* ServiceIntegration */,
 				8B69E50C1B8F73F900E82C5F /* CDM Go */,
 				8B69E5221B8F73F900E82C5F /* CDM GoTests */,
 				8B69E5341B8F742800E82C5F /* CDM Go WatchKit Extension */,
@@ -178,6 +187,7 @@
 				8B69E5161B8F73F900E82C5F /* Images.xcassets */,
 				8B69E5181B8F73F900E82C5F /* LaunchScreen.xib */,
 				8B69E50D1B8F73F900E82C5F /* Supporting Files */,
+				8B8793871B9D6CB40020DB5E /* InvokeService.swift */,
 			);
 			path = "CDM Go";
 			sourceTree = "<group>";
@@ -220,6 +230,7 @@
 				8B69E5351B8F742900E82C5F /* Supporting Files */,
 				8B9EE6941B9A226E00FFC356 /* ProjectDetailListItemsRow.swift */,
 				8B9EE6961B9A229700FFC356 /* ProjectDetailListTitleRow.swift */,
+				8BA672B31B9E3AB90024800A /* FeaturesController.swift */,
 			);
 			path = "CDM Go WatchKit Extension";
 			sourceTree = "<group>";
@@ -259,6 +270,15 @@
 				8B657B711B99F7140031E548 /* AutoCoded.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8B8793821B9C869C0020DB5E /* ServiceIntegration */ = {
+			isa = PBXGroup;
+			children = (
+				8B8793831B9C869C0020DB5E /* ServiceInvoker.swift */,
+				8B8793841B9C869C0020DB5E /* ServiceResponse.swift */,
+			);
+			path = ServiceIntegration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,10 +446,13 @@
 				8B6CFE0A1B9038AE003ECE47 /* Projects.swift in Sources */,
 				8B6CFE121B904492003ECE47 /* ProjectsViewController.swift in Sources */,
 				8B657B721B99F7140031E548 /* AutoCoded.swift in Sources */,
+				8B8793881B9D6CB40020DB5E /* InvokeService.swift in Sources */,
 				8B6CFE141B9060D2003ECE47 /* ProjectTableCell.swift in Sources */,
 				8B69E5121B8F73F900E82C5F /* ViewController.swift in Sources */,
+				8B8793851B9C869C0020DB5E /* ServiceInvoker.swift in Sources */,
 				8BF6AE7D1B9438F300E88379 /* ProjectDetailsViewController.swift in Sources */,
 				8B69E5101B8F73F900E82C5F /* AppDelegate.swift in Sources */,
+				8B8793861B9C869C0020DB5E /* ServiceResponse.swift in Sources */,
 				8B6CFE0C1B9038C1003ECE47 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -446,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BA672B41B9E3AB90024800A /* FeaturesController.swift in Sources */,
 				8B36FFF91B97314F0004A772 /* Projects.swift in Sources */,
 				8B69E53B1B8F742900E82C5F /* NotificationController.swift in Sources */,
 				8B9EE6951B9A226E00FFC356 /* ProjectDetailListItemsRow.swift in Sources */,

@@ -11,8 +11,10 @@ import UIKit
 class ProjectTableCell : UITableViewCell
 {
     @IBOutlet weak var projectName: UILabel!
-        
+    
+    @IBOutlet weak var projectLogoImageView: UIImageView!
     var notificationStatus : Bool!
-  
+    @IBOutlet weak var projectStatusImageView: UIImageView!
+    @IBOutlet weak var nextReleaseDateLabel: UILabel!
     
 }

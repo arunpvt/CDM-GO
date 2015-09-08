@@ -11,30 +11,29 @@ import UIKit
 class ProjectsViewController: UIViewController , UITableViewDataSource,UITableViewDelegate{
         var projects : [Project] = [Project]()
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var projectTableView: UITableView!
     override func viewDidLoad() {
-        sleep(2)
-        projects = ProjectsViewController.sampleData()
+        
         super.viewDidLoad()
+        var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let responseString: AnyObject? = appDelegate.syncData()
+        if(responseString != nil)
+        {
+            projects = InvokeService.deserializeJsonObject(responseString!)
+        }
         self.title = "Projects"
         self.automaticallyAdjustsScrollViewInsets = false
         self.projectTableView.tableFooterView = UIView()
         self.projectTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        
-//        var imageView :UIImageView = UIImageView(image: UIImage(named: "new_york_city_colors-wide.png"))
-//        imageView.frame = self.projectTableView.frame
-//        imageView.alpha = 0.6
-//        self.projectTableView.backgroundColor = UIColor.clearColor()
-//        self.projectTableView.backgroundView = imageView
-        
-        
-      
-        // Do any additional setup after loading the view, typically from a nib.
+               // Do any additional setup after loading the view, typically from a nib.
     }
     override func viewWillAppear(animated: Bool) {
         
-    }
+        self.navigationController?.navigationBarHidden = true
     
+    }
+      
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -43,9 +42,28 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
        
         var cell  = tableView.dequeueReusableCellWithIdentifier("ProjectTableCell") as! ProjectTableCell
-        cell.backgroundColor = projectTableView.backgroundColor
-        cell.projectName.text = projects[indexPath.row].name
+        cell.backgroundColor = UIColor.clearColor()
+        cell.projectName.text = projects[indexPath.row].projectName
         cell.notificationStatus = false
+        var statusImage:UIImage!
+        println(projects[indexPath.row].projectStatus)
+        if(projects[indexPath.row].projectStatus == "Critical")
+        {
+            statusImage = UIImage(named: "Critical")
+        }
+        else if(projects[indexPath.row].projectStatus == "Normal")
+        {
+            statusImage = UIImage(named: "Normal")
+        }
+        else if(projects[indexPath.row].projectStatus == "Moderate")
+        {
+            statusImage = UIImage(named: "Moderate")
+        }
+        var logoImages = ["pro1","Pro2","Pro3","Pro5"]
+        cell.projectLogoImageView.image = UIImage(named: logoImages[indexPath.row % 4])
+        cell.alpha = 0.3
+        cell.projectStatusImageView.image = statusImage
+        cell.nextReleaseDateLabel.text = projects[indexPath.row].nextReleaseDate
         return cell
         
     }
@@ -56,7 +74,6 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        let products = ["iPhone", "Apple Watch", "Mac", "iPad"]
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectTableCell
         var enable = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Enable") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
             cell.notificationStatus = true
@@ -96,23 +113,6 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         
     }
     
-    static func sampleData () -> [Project]{
-        
-        var projects = [Project]();
-        //var i :Int
-        for var i:Int = 0 ; i<40 ;i++
-        {
-            var project : Project = Project(projectId:i,projectName: "CDM "+"\(i)");
-            project.status = Project.ProjectStatus.Normal
-            project.sprintNo = 10
-            project.totalSprint = 15
-            project.apnsStatus = i % 2 == 0 ? true:false
-          
-            projects.append(project);
-        }
-        return projects
-    }
-    
     func setBackGroundColor(status : Bool)->UIColor
     {
         var color:UIColor!
@@ -127,6 +127,9 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         }
         return color
     }
-    
+    func showErrorAlertMessage()
+    {
+        var alert = UIAlertView(title: "Projects", message: "Some Error had incurred", delegate: self, cancelButtonTitle: "OK")
+    }
 }
 

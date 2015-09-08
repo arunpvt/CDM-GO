@@ -8,26 +8,50 @@
 
 import Foundation
 
-class Project: AutoCoded {
-    var projectId : Int
-    var name : String?
-    var status : ProjectStatus?
-    var sprintNo : Int!
+
+class Project {
+    
+    var projectID : String!
+    var projectName : String!
+    var projectStatus : String!
+    var currentSprint : Int!
     var totalSprint : Int!
     var nextReleaseDate : String!
-    var importantItem : [String]?
-    var featuresCompleted : [String]?
-    var buildStatus : String?
-    var apnsStatus : Bool?
+    var keyPoints : [String]!
+    var featuresCompleted : [String]!
+    var featuresPending : [String]!
+    var risks : [String]!
     
-    init(projectId id :Int, projectName name:String?) {
-        self.projectId = id
-        self.name = name
+    
+    
+    func convertToJson() -> [String: AnyObject!] {
+        
+        return [
+            "ProjectName": self.projectName,
+            "ProjectStatus": self.projectStatus,
+            "CurrentSprint": self.currentSprint,
+            "TotalSprint": self.totalSprint,
+            "NextReleaseDate": self.nextReleaseDate,
+            "KeyPoints": self.keyPoints as [String],
+            "FeaturesCompleted" : self.featuresCompleted as [String],
+            "FeaturesPending": self.featuresPending as [String ],
+            "Risks": self.risks as [String]]
     }
     
-    enum ProjectStatus : String{
-    case Normal = "Normal"
-    case Moderate = "Moderate"
-    case Critical = "Critical"
+    func initWithDictionary(objDict:[String: AnyObject]) -> Project {
+        
+        self.projectID = objDict[ "ProjectID"] as! String;
+        self.projectName = objDict[ "ProjectName"] as! String;
+        self.currentSprint = objDict[ "CurrentSprint"] as! Int;
+        self.totalSprint = objDict[ "TotalSprint"] as! Int;
+        self.nextReleaseDate = objDict[ "NextReleaseDate"] as? String;
+        self.keyPoints = objDict[ "KeyPoints"] as! [String];
+        self.featuresCompleted = objDict[ "FeaturesCompleted"] as! [String ];
+        self.featuresPending = objDict[ "FeaturesPending"] as! [String];
+        self.risks = objDict["Risks" ] as! [String];
+        self.projectStatus = InvokeService.trimSpacesInString(objDict["ProjectStatus"] as? String)
+        
+        return self ;
     }
+    
 }
