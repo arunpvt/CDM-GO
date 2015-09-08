@@ -72,36 +72,36 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
        return projects.count
     }
     
-    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectTableCell
-        var enable = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Enable") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
-            cell.notificationStatus = true
-            print("\(tableView.editing)")
-            tableView.editing = false
-        }
-        
-        var disable = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Disable"){ (action: UITableViewRowAction!, indexPath : NSIndexPath!) -> Void in
-            cell.notificationStatus = false
-            tableView.editing = false
-        }
-        if(cell.notificationStatus == true)
-        {
-            enable.backgroundColor = setBackGroundColor(cell.notificationStatus)
-            disable.backgroundColor = setBackGroundColor(!cell.notificationStatus)
-        }
-        else
-        {
-            disable.backgroundColor = setBackGroundColor(!cell.notificationStatus)
-            enable.backgroundColor = setBackGroundColor(cell.notificationStatus)
-        }
-        
-        return [disable,enable]
-        
-    }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
-    {
-       
-    }
+//    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+//        var cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectTableCell
+//        var enable = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "Enable") { (action: UITableViewRowAction!, indexPath: NSIndexPath!) -> Void in
+//            cell.notificationStatus = true
+//            print("\(tableView.editing)")
+//            tableView.editing = false
+//        }
+//        
+//        var disable = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "Disable"){ (action: UITableViewRowAction!, indexPath : NSIndexPath!) -> Void in
+//            cell.notificationStatus = false
+//            tableView.editing = false
+//        }
+//        if(cell.notificationStatus == true)
+//        {
+//            enable.backgroundColor = setBackGroundColor(cell.notificationStatus)
+//            disable.backgroundColor = setBackGroundColor(!cell.notificationStatus)
+//        }
+//        else
+//        {
+//            disable.backgroundColor = setBackGroundColor(!cell.notificationStatus)
+//            enable.backgroundColor = setBackGroundColor(cell.notificationStatus)
+//        }
+//        
+//        return [disable,enable]
+//        
+//    }
+//    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+//    {
+//       
+//    }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
