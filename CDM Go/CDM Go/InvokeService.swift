@@ -20,7 +20,7 @@ static let POSTMETHOD = "POST"
 static let APPROVEDSTATUS = "Approved"
 static let REJECTEDSTATUS = "Rejected"
     
-static let GETUSERURL = "/Login"
+static let GETUSERURL = "/API/Login"
 static let GETPROJECTURL = "/SyncProjects"
 static let NOTIFICATIONURL = "/UpdateNotification"
 static let APNUPDATEURL = "/UpdateDeviceAPN"
