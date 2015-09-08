@@ -44,7 +44,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // implemented in your application delegate
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         
-//        PushWizard.startWithToken(deviceToken, andAppKey: kAppKey_dist, andValues: nil)
         println("Got token data! \(deviceToken)")
     }
     
