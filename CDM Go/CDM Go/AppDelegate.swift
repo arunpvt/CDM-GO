@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var isLoggedIn : Bool = false
+    var deviceToken :String!
+    var projects : AnyObject!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -22,13 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (isLoggedIn)
         {
             var controller :UIViewController = storyBoard.instantiateViewControllerWithIdentifier("ProjectViewController") as! UIViewController
-            var navController :UINavigationController = UINavigationController(rootViewController: controller)
-            self.window?.rootViewController = navController
+            
+           // self.window?.rootViewController = navController
         }
         else
         {
              var controller :UIViewController = storyBoard.instantiateViewControllerWithIdentifier("ViewController") as! UIViewController
-            self.window?.rootViewController = controller
+            var navController :UINavigationController = UINavigationController(rootViewController: controller)
+            self.window?.rootViewController = navController
         }
         
         let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
@@ -66,24 +69,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     func application(application: UIApplication, handleWatchKitExtensionRequest userInfo: [NSObject : AnyObject]?, reply: (([NSObject : AnyObject]!) -> Void)!) {
-        var project :[Project] = ProjectsViewController.sampleData()
+        //var project :[Project] = ProjectsViewController.sampleData()
        
         if let type = userInfo!["Project"] as? String
         {
             if(type == "get")
             {
-                println("calling function")
-                reply(["project" : project])
+                let syncProjcet: AnyObject = syncData()!
+                if(syncProjcet.count > 0)
+                {
+                    reply(["project" : syncProjcet])
+                }
+                else
+                {
+                    reply(["project":"Failure"])
+                }
             }
         }
     }
 
-
+    func syncData() -> AnyObject?{
+        var projectData : AnyObject!
+        let (projectfromService: AnyObject?,status) = InvokeService.getProject("aaaa")
+        if(projectfromService != nil)
+        {
+                projectData =  projectfromService
+        }
+        else{
+                showErrorAlertMessage()
+        }
+        
+        return projectData
+    }
+    func showErrorAlertMessage()
+    {
+        var alert = UIAlertView(title: "Projects", message: "Some Error had incurred", delegate: self, cancelButtonTitle: "OK")
+    }
 }
 

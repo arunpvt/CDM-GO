@@ -11,20 +11,24 @@ import UIKit
 class ProjectDetailController : UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet weak var projectDetailsTableView: UITableView!
-    var importItems :[String] = ["Items 1","Items 2","Items 3","Items 4","Items 5"]
-    var majorItems :[String] = ["MItems 1","MItems 2","MItems 3","MItems 4","MItems 5"]
+//    var keyPoints :[String]!
+//    var risk :[String]!
+//    var featuresCompleted :[String]!
+//    var featuresPending :[String]!
+
     var project : Project?
     
     override func viewDidLoad() {
        
         super.viewDidLoad()
-        self.title = self.project?.name
+        self.title = self.project?.projectName
         self.automaticallyAdjustsScrollViewInsets = false
         self.projectDetailsTableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         self.view.bringSubviewToFront(projectDetailsTableView)
-    }
+            }
     override func viewWillAppear(animated: Bool) {
-        //animateTableView()
+        self.navigationController?.navigationBarHidden = false
+
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -34,6 +38,8 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "ProjectDetailsCell")
            
         }
+        cell!.textLabel?.textColor = UIColor(red: 215/255, green: 207/255, blue: 210/255, alpha: 1.0)
+
         if(indexPath.section == 0){
             getCellDetails(cell, cellIndexNumber: indexPath.row)
             
@@ -41,13 +47,24 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
         else if (indexPath.section == 1)
         {
             cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
-            cell!.textLabel?.text = majorItems[indexPath.row]
+            cell!.textLabel?.text = self.project!.keyPoints[indexPath.row]
         }
         else if (indexPath.section == 2)
         {
             cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
-            cell!.textLabel?.text = importItems[indexPath.row]
+            cell!.textLabel?.text = self.project!.risks[indexPath.row]
         }
+        else if (indexPath.section == 3)
+        {
+            cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
+            cell!.textLabel?.text = self.project!.featuresCompleted[indexPath.row]
+        }
+        else if (indexPath.section == 4)
+        {
+            cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
+            cell!.textLabel?.text = self.project!.featuresPending[indexPath.row]
+        }
+        cell?.backgroundColor = UIColor.clearColor()
         return cell!
         
     }
@@ -61,15 +78,26 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
         }
         else if(section == 1)
         {
-           rowCount = importItems.count
+           rowCount = self.project!.keyPoints.count
         }
         else if(section == 2)
         {
-            rowCount = majorItems.count
+            rowCount = self.project!.risks.count
+        }
+        else if(section == 3)
+        {
+            rowCount = self.project!.featuresCompleted.count
+        }
+        else if(section == 4)
+        {
+            rowCount = self.project!.featuresPending.count
         }
         return rowCount
     }
-    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.alpha = 0.5
+        
+    }
      func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         var title : String?
         if(section == 0)
@@ -78,18 +106,26 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
         }
         else if(section == 1)
         {
-            title = "Important Items"
+            title = "Key Points"
         }
-        else
+        else if (section == 2)
         {
-            title = "Major Items"
+            title = "Risks"
+        }
+        else if (section == 3)
+        {
+            title = "Features Completed"
+        }
+        else if (section == 4)
+        {
+            title = "Features Pendings"
         }
         return title
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
-        return Int(3)
+        return Int(5)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -111,18 +147,20 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
     
     func getCellDetails (tableViewCell : UITableViewCell?,cellIndexNumber index: Int){
         
-        tableViewCell?.textLabel?.textColor = UIColor(red: 79/255, green: 187/255, blue: 255/255, alpha: 1.0)
+        
         tableViewCell?.textLabel?.font = tableViewCell?.textLabel?.font.fontWithSize(10.0)
         tableViewCell?.detailTextLabel?.font = tableViewCell?.detailTextLabel?.font.fontWithSize(14)
+        tableViewCell!.detailTextLabel?.textColor = UIColor(red: 83/255, green: 132/255, blue: 190/255, alpha: 1.0)
+
         if(index == 0)
         {
             tableViewCell?.textLabel?.text = "Sprint No"
-            tableViewCell!.detailTextLabel?.text = String(format: "%d / %d",self.project!.sprintNo , self.project!.totalSprint)
+            tableViewCell!.detailTextLabel?.text = String(format: "%d / %d",self.project!.currentSprint , self.project!.totalSprint)
 
         }
        else if(index == 1){
             tableViewCell?.textLabel?.text = "Status"
-            tableViewCell!.detailTextLabel?.text  = self.project?.status?.rawValue
+            tableViewCell!.detailTextLabel?.text  = self.project?.projectStatus
 
        }
        else if(index == 2){

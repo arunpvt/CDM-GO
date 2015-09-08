@@ -15,25 +15,20 @@
                                 <tableRow identifier="projectTableRow" id="Cgr-Vd-nbl" customClass="ProjectTableRow" customModule="CDM_Go_WatchKit_Extension">
                                     <group key="rootItem" width="1" alignment="left" spacing="11" id="RtX-VO-guT">
                                         <items>
-                                            <group alignment="left" layout="vertical" spacing="0.0" id="Akg-DI-PyN">
+                                            <group height="24" alignment="center" verticalAlignment="center" layout="vertical" spacing="0.0" id="Akg-DI-PyN">
                                                 <items>
-                                                    <label width="1" height="20" alignment="left" text="Label" id="HQZ-BC-2cH">
-                                                        <color key="textColor" red="0.84378295825906124" green="0.8113843227296248" blue="0.82485410868056797" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <label width="1" height="30" alignment="left" text="Label" id="HQZ-BC-2cH">
+                                                        <color key="textColor" red="0.32549019610000002" green="0.51764705879999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="font" type="system" pointSize="17"/>
-                                                    </label>
-                                                    <label width="1" alignment="left" text="Label" id="Uvm-c9-uOR">
-                                                        <color key="textColor" red="0.32519774010000002" green="0.5184338664" blue="0.74405637250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                                     </label>
                                                 </items>
                                             </group>
-                                            <imageView width="25" height="25" alignment="center" verticalAlignment="center" id="y6d-zE-Os0"/>
+                                            <imageView width="20" height="20" alignment="center" verticalAlignment="center" id="y6d-zE-Os0"/>
                                         </items>
                                     </group>
                                     <connections>
                                         <outlet property="projectAlertImageView" destination="y6d-zE-Os0" id="s2u-6c-Cg6"/>
                                         <outlet property="projectName" destination="HQZ-BC-2cH" id="75y-JW-82O"/>
-                                        <outlet property="projectNextReleaseDate" destination="Uvm-c9-uOR" id="3tw-9X-IGL"/>
                                         <outlet property="projectTableGroup" destination="RtX-VO-guT" id="Aga-XD-Spq"/>
                                     </connections>
                                 </tableRow>
@@ -110,7 +105,7 @@
                                             <group key="rootItem" width="1" height="22" alignment="left" backgroundImage="border401" layout="vertical" radius="0.0" spacing="0.0" id="fAF-jU-hs8">
                                                 <items>
                                                     <label width="1" alignment="right" text="Label" id="Wwc-tF-rxQ">
-                                                        <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                        <color key="textColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="font" type="system" weight="thin" pointSize="13"/>
                                                     </label>
                                                 </items>
@@ -124,6 +119,14 @@
                                     </items>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </table>
+                                <button width="136" height="19" alignment="left" title="Features" id="2Pe-QC-Y3j">
+                                    <color key="titleColor" red="0.2858498424" green="0.81801772319999999" blue="0.81043346699999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                    <connections>
+                                        <action selector="OnFeatureClick" destination="XwY-c1-Nlg" id="84E-Uy-0Qg"/>
+                                    </connections>
+                                </button>
                             </items>
                         </group>
                     </items>
@@ -136,7 +139,55 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="463" y="360.5"/>
+            <point key="canvasLocation" x="463" y="351"/>
+        </scene>
+        <!--featureController-->
+        <scene sceneID="p4v-Bf-gej">
+            <objects>
+                <controller identifier="featureController" id="Fuo-IQ-peg" customClass="FeaturesController" customModule="CDM_Go_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Kc8-fS-N1d">
+                            <items>
+                                <tableRow identifier="ListTitleRow" id="Evv-3i-ypd" customClass="ProjectDetailListTitleRow" customModule="CDM_Go_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" radius="0.0" id="Jwy-DZ-kKS">
+                                        <items>
+                                            <label width="1" alignment="left" text="Label" textAlignment="left" id="1be-Gd-XYC">
+                                                <color key="textColor" red="0.2858498424" green="0.81801772319999999" blue="0.81043346699999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="itemTitle" destination="1be-Gd-XYC" id="lqx-lq-O42"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="ListItemRow" id="SIQ-kg-IHs" customClass="ProjectDetailListItemsRow" customModule="CDM_Go_WatchKit_Extension">
+                                    <group key="rootItem" width="1" height="22" alignment="left" backgroundImage="border401" layout="vertical" radius="0.0" spacing="0.0" id="6OT-RA-eVc">
+                                        <items>
+                                            <label width="132" alignment="left" text="Label" numberOfLines="3" id="TwY-Bw-7Ei">
+                                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="listItemName" destination="TwY-Bw-7Ei" id="imc-gA-B9s"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="featuresTable" destination="Kc8-fS-N1d" id="2No-pE-Xtm"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="638" y="341"/>
         </scene>
         <!--Glance Interface Controller-->
         <scene sceneID="BOz-TT-tkC">

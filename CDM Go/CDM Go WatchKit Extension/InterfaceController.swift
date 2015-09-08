@@ -17,16 +17,24 @@ class InterfaceController: WKInterfaceController {
     let projects = ["CDM","Driver Seat","Tymetrix"]
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        // Configure interface objects here.
+       
+        println("End")
     }
 
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
-        projectsModel = sampleData()
-        loadTableRows()
-        
+        WKInterfaceController.openParentApplication(["Project":"get"]) { (userInfo:[NSObject : AnyObject]!, error: NSError!) -> Void in
+            if ((error) != nil) {
+                println(error)
+                return
+            }
+            else
+            {
+                self.projectsModel = Project.deserializeJsonObject(userInfo["project"]!)
+                self.loadTableRows()
+            }
+        }
     }
 
     override func didDeactivate() {
@@ -36,27 +44,26 @@ class InterfaceController: WKInterfaceController {
     func loadTableRows()
     {
         projectTable.setNumberOfRows(projectsModel.count, withRowType: "projectTableRow")
-       
         var i : Int = 0
         for project in projectsModel
         {
             let row = projectTable.rowControllerAtIndex(i) as! ProjectTableRow
             
-            row.projectName.setText(project.name)
-            if(project.status == Project.ProjectStatus.Critical)
+            row.projectName.setText(project.projectName)
+            println(project.projectStatus)
+            if(project.projectStatus == "Critical")
             {
-                row.projectAlertImageView.setImageNamed("High Priority-50.png")
+                row.projectAlertImageView.setImageNamed("Critical")
             }
-            else if(project.status == Project.ProjectStatus.Moderate)
+            else if(project.projectStatus == "Moderate")
             {
-                row.projectAlertImageView.setImageNamed("Medium Priority-50")
+                row.projectAlertImageView.setImageNamed("Moderate")
             }
-            else if(project.status == Project.ProjectStatus.Normal)
+            else if(project.projectStatus == "Normal")
             {
                 
-                row.projectAlertImageView.setImageNamed("Low Priority-50")
+                row.projectAlertImageView.setImageNamed("Normal")
             }
-            row.projectNextReleaseDate.setText(project.nextReleaseDate)
             ++i
         }
     }
@@ -64,50 +71,7 @@ class InterfaceController: WKInterfaceController {
         
         self.pushControllerWithName("projectDetails", context: projectsModel[rowIndex])
     }
-    
-    func sampleData () -> [Project]{
-        
-        var projects = [Project]();
-        for var i:Int = 0 ; i<10 ;i++
-        {
-            var project : Project = Project(projectId:i,projectName: "CDM "+"\(i)");
-            if(i == 0 )
-            {
-                project.status = Project.ProjectStatus.Critical
-            }
-            else if (i == 1)
-            {
-                project.status = Project.ProjectStatus.Moderate
-
-            }
-            else
-            {
-                 project.status = Project.ProjectStatus.Normal
-            }
-            
-            
-            project.sprintNo = 1515
-            project.totalSprint = 15
-            project.apnsStatus = i % 2 == 0 ? true:false
-            project.nextReleaseDate = "Feb 25, 2015"
-            project.importantItem = [String]()
-            project.importantItem.append("Important")
-            project.importantItem.append("Important1")
-            project.importantItem.append("Important2")
-            project.importantItem.append("Important3")
-            project.importantItem.append("Important4")
-            project.featuresCompleted = [String]()
-            project.featuresCompleted.append("Feature1")
-            project.featuresCompleted.append("Feature2")
-            project.featuresCompleted.append("Feature3")
-            project.featuresCompleted.append("Feature4")
-            projects.append(project);
-            
-        }
-        let requestValues = ["Project":"get"]
-        return projects
-    }
-    
+  
 
 
 }

@@ -9,27 +9,52 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+   
     @IBOutlet weak var emailIdTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var registerButton: UIButton!
-    var isValid :Bool = false
-    var effectView : UIVisualEffectView?
-
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var effectView : UIVisualEffectView!
+    @IBOutlet weak var userNameView: UIView!
+    @IBOutlet weak var emailIdView: UIView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    var userInformationStorage : NSUserDefaults!
+    
+    @IBOutlet weak var WaitingResAcitivityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var WaitingForResponsView: UIView!
+    
+    private var isValid :Bool = false
+    private var IsUserDataStorageSet : Bool!
+    private var hasUser : Bool!
+    private let approvalWaitingMessage = "Submitted for Admin Approval, Wait for 24 Hours"
+    private let rejectedMessage = "Registration is rejected contact your administrator"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loginView.backgroundColor = UIColor.clearColor().colorWithAlphaComponent(0.0)
-        loginView.layer.borderColor =  UIColor.whiteColor().CGColor
-        loginView.layer.borderWidth = 0.4;
-        loginView.layer.cornerRadius = 10
-        self.animate()
+        userInformationStorage = NSUserDefaults.standardUserDefaults()
+        if let userName: String = userInformationStorage.objectForKey(InvokeService.USERNAMEJSONKEY) as? String
+        {
+            IsUserDataStorageSet = true
+            userNameTextField.text = userName
+            emailIdTextField.text = userInformationStorage.objectForKey(InvokeService.USEREMAILJSONKEY) as! String
+            let (userId, userStatus , status) = InvokeService.getUser( userNameTextField.text, emailAddress: emailIdTextField.text)
+            showViewBasedOnUserStatus(userStatus,gotResponse: status)
+        }
+        else
+        {
+            IsUserDataStorageSet = false
+        }
         
-        //registerButton.enabled = false
-    
-        // Do any additional setup after loading the view, typically from a nib.
+       
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        applyViewModifications()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,37 +76,74 @@ class ViewController: UIViewController {
 
         if(!notifyError(userNameTextField, error: nil) && !notifyError(emailIdTextField, error: nil) && !validateEmailRegex(emailIdTextField))
         {
-            loginView.alpha = 0.2
-            effectView?.alpha = 1.0
-            activityIndicator.startAnimating()
+            
+            let (userId,userStatus, status) = InvokeService.getUser(self.userNameTextField.text, emailAddress: emailIdTextField.text)
+            if(userId != nil)
+            {
+               
+                if(IsUserDataStorageSet == false)
+                {
+                    userInformationStorage.setObject(self.userNameTextField.text, forKey: InvokeService.USERNAMEJSONKEY)
+                    userInformationStorage.setObject(self.emailIdTextField.text, forKey:InvokeService.USEREMAILJSONKEY)
+                    userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
+                }
+            }
+            showViewBasedOnUserStatus(userStatus,gotResponse: status)
             
             
-            var storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            var controller :UIViewController = storyboard!.instantiateViewControllerWithIdentifier("ProjectViewController") as! UIViewController
-            var navController = UINavigationController(rootViewController: controller)
-             self.presentViewController(navController, animated: true, completion: nil)
-
         }
-       // self.performSegueWithIdentifier("seg", sender: self)
+       
+    }
+    private func showViewBasedOnUserStatus(status: String? ,gotResponse : Bool)
+    {
+        if(gotResponse)
+        {
+            if status == InvokeService.APPROVEDSTATUS
+            {
+                moveToNextViewController()
+            
+            }
+            else if (status == InvokeService.REJECTEDSTATUS)
+            {
+                showAlertView(rejectedMessage)
+            }
+            else
+            {
+                showAlertView(approvalWaitingMessage)
+            }
+        }
+        else
+        {
+             showAlertView("Some Error Occured in Network")
+        }
+    }
+    private func moveToNextViewController()
+    {
+//        var storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var controller :UIViewController = storyboard!.instantiateViewControllerWithIdentifier("ProjectViewController") as! UIViewController
+        self.navigationController?.title = nil
+        self.title = nil
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    private func LoadWaitingForResponseView()
+    {
+        WaitingForResponsView.alpha = 0.9
+        WaitingForResponsView.hidden = false
+        WaitingResAcitivityIndicator.startAnimating()
     }
     
-    func animate()
+    private func applyViewModifications()
     {
-        UIView.beginAnimations("test", context: nil)
-        UIView.setAnimationDuration(1.2)
-        UIView.setAnimationDelay(0.2)
-        //UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut);
-        //effectView!.alpha = 0.1
-        UIView.commitAnimations()
+        
+        emailIdView.alpha = 0.2
+        userNameView.alpha = 0.2
+        
         
     }
-    func notifyError(textField:UITextField, error:Bool?) ->Bool
+    private func notifyError(textField:UITextField, error:Bool?) ->Bool
     {
         var isError : Bool = false
-        var errorImageName : String = "delete.png"
-        var validImageName : String = "ok.png"
         textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 4
        
         if (error == true || textField.text.isEmpty)
         {
@@ -91,13 +153,14 @@ class ViewController: UIViewController {
         }
         else
         {
-            textField.layer.borderColor = UIColor.greenColor().CGColor
+            textField.layer.borderColor = UIColor.clearColor().CGColor
                        
         }
         return isError
         
     }
-    func validateStringRegex(textField:UITextField) -> Bool
+    
+    private func validateStringRegex(textField:UITextField) -> Bool
     {
         var valid : Bool
         let regex = NSRegularExpression(pattern: "^(?=.*[a-zA-Z])", options: nil, error: nil)
@@ -105,7 +168,8 @@ class ViewController: UIViewController {
         notifyError(textField, error: valid)
         return valid
     }
-    func validateEmailRegex(textField:UITextField) -> Bool
+    
+    private func validateEmailRegex(textField:UITextField) -> Bool
     {
         var valid : Bool
         let regexEmail = NSRegularExpression(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}", options: nil, error: nil)
@@ -114,6 +178,15 @@ class ViewController: UIViewController {
         return valid
         
     }
-
+    private func showAlertView(message:String)
+    {
+        var alertView = UIAlertView(title: "Registration", message: message, delegate: self, cancelButtonTitle: "OK")
+        alertView.show()
+    }
+    private func clearNSDefaultDictionary()
+    {
+        let bundleId = NSBundle.mainBundle().bundleIdentifier
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(bundleId!)
+    }
 }
 

@@ -19,20 +19,23 @@ class ProjectDetailsController: WKInterfaceController {
     @IBOutlet weak var nextReleaseDateLabel: WKInterfaceLabel!
     @IBOutlet weak var sprintNoLabel: WKInterfaceLabel!
     
+    
     private let _currentSprintNo: String = "Current Sprint No"
     private let _nextReleaseDate: String = "Next Release Date"
     private let _status: String = "Status"
-    private let _importantItems: String = "Important Items"
-    private let _featuredItems: String = "Featured Items"
+    private let _importantItems: String = "KeyPoints"
+    private let _featuredItems: String = "Risks"
     var project : Project!
     
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
         
         project = context as! Project
-        self.setTitle(project.name)
+        self.setTitle(project.projectName)
     }
-
+    @IBAction func OnFeatureClick() {
+        self.pushControllerWithName("featureController", context: project)
+    }
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
        
@@ -47,20 +50,20 @@ class ProjectDetailsController: WKInterfaceController {
     }
     func setProjectDetails()
     {
-        if(project.status == Project.ProjectStatus.Critical)
+        if(project.projectStatus == "Critical")
         {
-            statusImageView.setImageNamed("High Priority-50.png")
+            statusImageView.setImageNamed("Critical")
         }
-        else if(project.status == Project.ProjectStatus.Moderate)
+        else if(project.projectStatus == "Critical")
         {
-            statusImageView.setImageNamed("Medium Priority-50")
+            statusImageView.setImageNamed("Moderate")
         }
-        else if(project.status == Project.ProjectStatus.Normal)
+        else if(project.projectStatus == "Normal")
         {
-            statusImageView.setImageNamed("Low Priority-50")
+            statusImageView.setImageNamed("Normal")
         }
-        projectTitleLabel.setText(project.name)
-        sprintNoLabel.setText(String(format: "%d / %d", project.sprintNo! , project.totalSprint! ))
+        projectTitleLabel.setText(project.projectName)
+        sprintNoLabel.setText(String(format: "%d / %d", project.currentSprint! , project.totalSprint! ))
         nextReleaseDateLabel.setText(project.nextReleaseDate)
     }
     func loadTableRows()
@@ -69,6 +72,7 @@ class ProjectDetailsController: WKInterfaceController {
          NSLog("total Number of rows  %d ",projectDetailsTable.numberOfRows)
         for rowNumber in 0..<projectDetailsTable.numberOfRows
         {
+            NSLog("rowNumber");
             let rowCell: AnyObject! = projectDetailsTable.rowControllerAtIndex(rowNumber)
             if(rowCell!.isKindOfClass(ProjectDetailListTitleRow))
             {
@@ -80,95 +84,61 @@ class ProjectDetailsController: WKInterfaceController {
             else
             {
                 var projectLabelTitleRow : ProjectDetailListItemsRow = rowCell as! ProjectDetailListItemsRow
-                if (project.importantItem.count > 0 && rowNumber <= project.importantItem.count)
+                
+                if (project.keyPoints.count > 0 && rowNumber <= project.keyPoints.count)
                 {
-                   projectLabelTitleRow.listItemName.setText(project.importantItem[rowNumber-1])
+                   projectLabelTitleRow.listItemName.setText(project.keyPoints[rowNumber-1])
+                }
+                else if (project.risks.count > 0 && rowNumber >= project.keyPoints.count+1)
+                {
+                    var riskRowNumber : Int = rowNumber
+                    if (project.keyPoints.count > 0)
+                    {
+                        riskRowNumber = rowNumber - (project.keyPoints.count + 1)
+                    }
+                    projectLabelTitleRow.listItemName.setText(project.risks[riskRowNumber - 1])
                 }
                 else
                 {
-                    var featureRowNumber : Int = rowNumber
-                    if (project.importantItem.count > 0)
-                    {
-                        featureRowNumber = rowNumber - (project.importantItem.count + 1)
-                    }
-                    projectLabelTitleRow.listItemName.setText(project.featuresCompleted[featureRowNumber - 1])
+                     projectLabelTitleRow.listItemName.setText("No Items")
                 }
+                
             }            
         }
     }
-//    override func table(table: WKInterfaceTable, didSelectRowAtIndex rowIndex: Int) {
-//        if(rowIndex > 2)
-//        {
-//            let rowCell: AnyObject! = projectDetailsTable.rowControllerAtIndex(rowIndex)
-//            var itemsCollection : [String]!
-//            var title :String!
-//            if(rowCell.isKindOfClass(ProjectLabelNavigationRow))
-//            {
-//                let projectNavRow = rowCell as! ProjectLabelNavigationRow
-//                 NSLog("Items Count %d ",project.importantItem.count) //), //project.featuresCompleted.count)
-//                if(table.numberOfRows > 4)
-//                {
-//                    itemsCollection = rowIndex == 3 ? project.importantItem : project.featuresCompleted
-//                     NSLog("Items Count %d", project.importantItem.count)
-//                }
-//                else
-//                {
-//                    itemsCollection = project.importantItem.count > 0 ? project.importantItem : project.featuresCompleted
-//                    NSLog(" Items Count %d", project.featuresCompleted.count)
-//                }
-//            }
-//           NSLog(" Assingned Items Count %d", itemsCollection.count)
-//            self.pushControllerWithName("itemDetailsController", context:itemsCollection)
-//        }
-//        
-//    }
     
     func getRowTypes() -> [String]
     {
         var rowTypes : [String] = [String]()
-        println("Number of Important Items \(project.importantItem.count)  Number of Important Items \(project.featuresCompleted.count)")
-        if (project.importantItem.count > 0 ) //&& project.featuresCompleted.count > 0 )
+        println("Number of Key Items \(project.keyPoints.count)  Number of Risks Items \(project.risks.count)")
+        rowTypes.append("ListTitleRow")
+        if (project.keyPoints.count > 0 )
         {
-            rowTypes.append("ListTitleRow")
-            
-            for numberOfNavigateRow in 1...project.importantItem.count
+            for numberOfNavigateRow in 1...project.keyPoints.count
             {
                 rowTypes.append("ListItemRow")
             }
         }
-        if (project.featuresCompleted.count > 0 )
+        else
         {
             rowTypes.append("ListTitleRow")
-            
-            for numberOfNavigateRow in 1...project.featuresCompleted.count
+        }
+        rowTypes.append("ListTitleRow")
+        if (project.risks.count > 0 )
+        {
+            for numberOfNavigateRow in 1...project.risks.count
             {
                 rowTypes.append("ListItemRow")
             }
             
         }
+        else
+        {
+            rowTypes.append("ListItemRow")
+        }
+        //rowTypes.append("FeaturesRowController")
         return rowTypes
     }
-    
-//    func setRowInformation(rowNumber : Int, row :ProjectLabelRow, projectDetails:Project)
-//    {
-//        if(rowNumber == 0)
-//        {
-//            row.titleLabel.setText(_currentSprintNo)
-//            var descriptionText : String = NSNumber(integer: projectDetails.sprintNo!).stringValue
-//            row.descriptionLabel.setText(descriptionText)
-//        }
-//        else if (rowNumber == 1)
-//        {
-//            row.titleLabel.setText(_status)
-//            row.descriptionLabel.setText(projectDetails.status?.rawValue)
-//
-//        }
-//        else
-//        {
-//            row.titleLabel.setText(_nextReleaseDate)
-//            row.descriptionLabel.setText(projectDetails.nextReleaseDate)
-//
-//        }
-//    }
+
 
 }
