@@ -10,8 +10,8 @@ import UIKit
 import WatchKit
 
 class FeaturesController: WKInterfaceController {
-   private let _featureCompleted = "Features Completed"
-   private let _featurePendings = "Features Pendings"
+   private let _featureCompleted = "Completed"
+   private let _featurePendings = "Pendings"
     @IBOutlet weak var featuresTable: WKInterfaceTable!
     
     var featuresCompleted :[String] = [String]()
@@ -48,7 +48,7 @@ class FeaturesController: WKInterfaceController {
             if(rowCell!.isKindOfClass(ProjectDetailListTitleRow))
             {
                 var projectLabelRow : ProjectDetailListTitleRow = rowCell as! ProjectDetailListTitleRow
-                var title = rowNumber == 0 ? _featurePendings:_featureCompleted
+                var title = rowNumber == 0 ? _featureCompleted:_featurePendings
                 projectLabelRow.itemTitle.setText(title)
                 
             }
@@ -56,18 +56,18 @@ class FeaturesController: WKInterfaceController {
             {
                 var projectLabelTitleRow : ProjectDetailListItemsRow = rowCell as! ProjectDetailListItemsRow
                 
-                if (featuresPending.count > 0 && rowNumber <= featuresPending.count)
+                if (featuresCompleted.count > 0 && rowNumber <= featuresCompleted.count)
                 {
-                    projectLabelTitleRow.listItemName.setText(featuresPending[rowNumber-1])
+                    projectLabelTitleRow.listItemName.setText(featuresCompleted[rowNumber-1])
                 }
-                else if (featuresCompleted.count > 0 && rowNumber >= featuresCompleted.count+1)
+                else if (featuresPending.count > 0 && rowNumber >= featuresPending.count+1)
                 {
                     var riskRowNumber : Int = rowNumber
-                    if (featuresPending.count > 0)
+                    if (featuresCompleted.count > 0)
                     {
-                        riskRowNumber = rowNumber - (featuresPending.count + 1)
+                        riskRowNumber = rowNumber - (featuresCompleted.count + 1)
                     }
-                    projectLabelTitleRow.listItemName.setText(featuresCompleted[riskRowNumber - 1])
+                    projectLabelTitleRow.listItemName.setText(featuresPending[riskRowNumber - 1])
                 }
                 else
                 {
@@ -83,21 +83,21 @@ class FeaturesController: WKInterfaceController {
         var rowTypes : [String] = [String]()
         println("Number of Key Items \(featuresCompleted.count)  Number of Risks Items \(featuresPending.count)")
         rowTypes.append("ListTitleRow")
-        if (featuresPending.count > 0 )
+        if (featuresCompleted.count > 0 )
         {
-            for numberOfNavigateRow in 1...featuresPending.count
+            for numberOfNavigateRow in 1...featuresCompleted.count
             {
                 rowTypes.append("ListItemRow")
             }
         }
         else
         {
-            rowTypes.append("ListTitleRow")
+            rowTypes.append("ListItemRow")
         }
         rowTypes.append("ListTitleRow")
-        if (featuresCompleted.count > 0 )
+        if (featuresPending.count > 0 )
         {
-            for numberOfNavigateRow in 1...featuresCompleted.count
+            for numberOfNavigateRow in 1...featuresPending.count
             {
                 rowTypes.append("ListItemRow")
             }

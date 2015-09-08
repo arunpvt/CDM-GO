@@ -9,6 +9,7 @@
 import UIKit
 
 class ProjectDetailController : UIViewController,UITableViewDataSource,UITableViewDelegate {
+    let none = "None"
     
     @IBOutlet weak var projectDetailsTableView: UITableView!
 //    var keyPoints :[String]!
@@ -26,6 +27,7 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
         self.projectDetailsTableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         self.view.bringSubviewToFront(projectDetailsTableView)
             }
+   
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
 
@@ -38,31 +40,33 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "ProjectDetailsCell")
            
         }
-        cell!.textLabel?.textColor = UIColor(red: 215/255, green: 207/255, blue: 210/255, alpha: 1.0)
-
+       
+        
         if(indexPath.section == 0){
             getCellDetails(cell, cellIndexNumber: indexPath.row)
             
         }
         else if (indexPath.section == 1)
         {
-            cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
-            cell!.textLabel?.text = self.project!.keyPoints[indexPath.row]
+            cell!.textLabel?.text = self.project!.keyPoints.count == 0 ? none :self.project!.keyPoints[indexPath.row]
         }
         else if (indexPath.section == 2)
         {
-            cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
-            cell!.textLabel?.text = self.project!.risks[indexPath.row]
+            cell!.textLabel?.text = self.project!.risks.count == 0 ? none : self.project!.risks[indexPath.row]
         }
         else if (indexPath.section == 3)
         {
-            cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
-            cell!.textLabel?.text = self.project!.featuresCompleted[indexPath.row]
+            cell!.textLabel?.text =  self.project!.featuresCompleted.count == 0 ? none:self.project!.featuresCompleted[indexPath.row]
         }
         else if (indexPath.section == 4)
         {
-            cell?.textLabel?.font = cell?.textLabel?.font.fontWithSize(10.0)
-            cell!.textLabel?.text = self.project!.featuresPending[indexPath.row]
+            cell!.textLabel?.text = self.project!.featuresPending.count == 0 ? none:self.project!.featuresPending[indexPath.row]
+        }
+        if (indexPath.section > 0)
+        {
+            cell!.textLabel?.textColor = UIColor(red: 141/255, green: 141/255, blue: 141/255, alpha: 1.0)
+            cell!.textLabel?.font = cell?.textLabel?.font.fontWithSize(25)
+        
         }
         cell?.backgroundColor = UIColor.clearColor()
         return cell!
@@ -78,79 +82,89 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
         }
         else if(section == 1)
         {
-           rowCount = self.project!.keyPoints.count
+            rowCount = self.project!.keyPoints.count == 0 ? 1 : self.project!.keyPoints.count
         }
         else if(section == 2)
         {
-            rowCount = self.project!.risks.count
+            rowCount = self.project!.risks.count  == 0 ? 1 : self.project!.risks.count
         }
         else if(section == 3)
         {
-            rowCount = self.project!.featuresCompleted.count
+            rowCount = self.project!.featuresCompleted.count  == 0 ? 1 : self.project!.featuresCompleted.count
         }
         else if(section == 4)
         {
-            rowCount = self.project!.featuresPending.count
+            rowCount = self.project!.featuresPending.count == 0 ? 1 :  self.project!.featuresPending.count
         }
         return rowCount
     }
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        view.alpha = 0.5
+
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var headerView : UIView!
+        if(section > 0 )
+        {
+        headerView = UIView(frame: CGRectMake(0, 0, tableView.frame.width, 60))
+        var label = UILabel(frame: CGRectMake(15, 10, tableView.frame.width, 50))
+        label.font = label.font.fontWithSize(30)
+        label.textColor = UIColor(red: 68/255, green: 171/255, blue: 171/255, alpha: 1.0)
+        label.text = "test"
+        headerView.addSubview(label)
+        headerView.backgroundColor = UIColor(patternImage: UIImage(named: "bg")!)
+        headerView.alpha = 0.8
         
-    }
-     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var title : String?
-        if(section == 0)
+        if(section == 1)
         {
-            title = "Details"
-        }
-        else if(section == 1)
-        {
-            title = "Key Points"
+            label.text = "Key Points"
         }
         else if (section == 2)
         {
-            title = "Risks"
+            label.text = "Risks"
         }
         else if (section == 3)
         {
-            title = "Features Completed"
+            
+            label.text = "Features Completed"
         }
         else if (section == 4)
         {
-            title = "Features Pendings"
+           label.text = "Features Pendings"
         }
-        return title
+        return headerView
+        }
+        else
+        {
+            headerView = UIView()
+        }
+        return headerView
     }
-    
+
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         
         return Int(5)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(40)
+        if(section > 0)
+        {
+        return CGFloat(60)
+            
+        }
+        return CGFloat (0)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        var height : CGFloat = 0.0
-        if(indexPath.section == 0)
-        {
-            height = 40.0
-        }
-        else
-        {
-            height = 25.0
-        }
+        var height : CGFloat = 80.0
+       
         return height
     }
     
     func getCellDetails (tableViewCell : UITableViewCell?,cellIndexNumber index: Int){
         
         
-        tableViewCell?.textLabel?.font = tableViewCell?.textLabel?.font.fontWithSize(10.0)
-        tableViewCell?.detailTextLabel?.font = tableViewCell?.detailTextLabel?.font.fontWithSize(14)
-        tableViewCell!.detailTextLabel?.textColor = UIColor(red: 83/255, green: 132/255, blue: 190/255, alpha: 1.0)
+        tableViewCell?.textLabel?.font = tableViewCell?.textLabel?.font.fontWithSize(20)
+        tableViewCell?.detailTextLabel?.font = tableViewCell?.detailTextLabel?.font.fontWithSize(30)
+        tableViewCell!.detailTextLabel?.textColor = UIColor(red: 95/255, green: 142/255, blue: 188/255, alpha: 1.0)
+        tableViewCell!.textLabel?.textColor = UIColor(red: 141/255, green: 141/255, blue: 141/255, alpha: 1.0)
 
         if(index == 0)
         {

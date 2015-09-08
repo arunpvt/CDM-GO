@@ -30,6 +30,7 @@ static func getUser(userName : String , emailAddress : String) -> (String?, Stri
 {
     var userStatus : String?
     var userId : String?
+    var userEmail:String?
     var userDetails : NSDictionary = [USERNAMEJSONKEY : userName , USEREMAILJSONKEY : emailAddress]
     var jsonString = convertToJsonString(userDetails)
     var response = ServiceInvoker.invokeServie(GETUSERURL, method: POSTMETHOD, withObject: jsonString!,isProject: false)
@@ -45,7 +46,6 @@ static func getUser(userName : String , emailAddress : String) -> (String?, Stri
             {
                 userStatus  = trimSpacesInString(userDetailsFromService?.objectForKey(InvokeService.USERSTATUSJSONKEY) as? String)
                 userId = trimSpacesInString(userDetailsFromService?.objectForKey(InvokeService.USERIDJSONKEY) as? String)
-            
             }
         }
         

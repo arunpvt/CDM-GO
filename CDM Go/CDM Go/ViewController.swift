@@ -31,6 +31,17 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailIdTextField.delegate = self;
+        userNameTextField.delegate = self;
+       
+    }
+
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        applyViewModifications()
         userInformationStorage = NSUserDefaults.standardUserDefaults()
         if let userName: String = userInformationStorage.objectForKey(InvokeService.USERNAMEJSONKEY) as? String
         {
@@ -44,17 +55,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
         {
             IsUserDataStorageSet = false
         }
-        emailIdTextField.delegate = self;
-        userNameTextField.delegate = self;
-       
-    }
-
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-
-    }
-
-    override func viewWillAppear(animated: Bool) {
-        applyViewModifications()
 
     }
     

@@ -16,12 +16,6 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let responseString: AnyObject? = appDelegate.syncData()
-        if(responseString != nil)
-        {
-            projects = InvokeService.deserializeJsonObject(responseString!)
-        }
         self.title = "Projects"
         self.automaticallyAdjustsScrollViewInsets = false
         self.projectTableView.tableFooterView = UIView()
@@ -31,7 +25,12 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = true
-    
+        var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let responseString: AnyObject? = appDelegate.syncData()
+        if(responseString != nil)
+        {
+            projects = InvokeService.deserializeJsonObject(responseString!)
+        }
     }
       
     override func didReceiveMemoryWarning() {

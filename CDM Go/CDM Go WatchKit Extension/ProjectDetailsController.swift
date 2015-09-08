@@ -15,7 +15,6 @@ class ProjectDetailsController: WKInterfaceController {
     @IBOutlet weak var projectDetailsTable: WKInterfaceTable!
     
     @IBOutlet weak var statusImageView: WKInterfaceImage!
-    @IBOutlet weak var projectTitleLabel: WKInterfaceLabel!
     @IBOutlet weak var nextReleaseDateLabel: WKInterfaceLabel!
     @IBOutlet weak var sprintNoLabel: WKInterfaceLabel!
     
@@ -54,7 +53,7 @@ class ProjectDetailsController: WKInterfaceController {
         {
             statusImageView.setImageNamed("Critical")
         }
-        else if(project.projectStatus == "Critical")
+        else if(project.projectStatus == "Moderate")
         {
             statusImageView.setImageNamed("Moderate")
         }
@@ -62,7 +61,6 @@ class ProjectDetailsController: WKInterfaceController {
         {
             statusImageView.setImageNamed("Normal")
         }
-        projectTitleLabel.setText(project.projectName)
         sprintNoLabel.setText(String(format: "%d / %d", project.currentSprint! , project.totalSprint! ))
         nextReleaseDateLabel.setText(project.nextReleaseDate)
     }
@@ -121,7 +119,7 @@ class ProjectDetailsController: WKInterfaceController {
         }
         else
         {
-            rowTypes.append("ListTitleRow")
+            rowTypes.append("ListItemRow")
         }
         rowTypes.append("ListTitleRow")
         if (project.risks.count > 0 )
@@ -136,7 +134,6 @@ class ProjectDetailsController: WKInterfaceController {
         {
             rowTypes.append("ListItemRow")
         }
-        //rowTypes.append("FeaturesRowController")
         return rowTypes
     }
 

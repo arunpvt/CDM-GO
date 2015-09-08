@@ -48,38 +48,35 @@
             <objects>
                 <controller identifier="projectDetails" id="XwY-c1-Nlg" customClass="ProjectDetailsController" customModule="CDM_Go_WatchKit_Extension">
                     <items>
-                        <group alignment="left" layout="vertical" spacing="5" id="T1i-qK-Cj4">
+                        <group alignment="left" layout="vertical" spacing="4" id="T1i-qK-Cj4">
                             <items>
-                                <group width="130" height="32" alignment="left" spacing="0.0" id="Uib-mX-7dF">
+                                <group width="136" height="42" alignment="left" spacing="0.0" id="Uib-mX-7dF">
                                     <items>
-                                        <label width="91" height="34" alignment="left" text="Label" textAlignment="left" id="u8F-mg-fAZ">
-                                            <fontDescription key="font" type="system" pointSize="20"/>
-                                        </label>
-                                        <imageView width="30" height="30" alignment="center" id="ziZ-Ef-YTp"/>
+                                        <group width="103" alignment="left" layout="vertical" spacing="0.0" id="gjX-qS-4bZ">
+                                            <items>
+                                                <label width="82" alignment="left" text="Sprint No" textAlignment="left" id="wMA-TE-H2i">
+                                                    <color key="textColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="12"/>
+                                                </label>
+                                                <label width="80" height="23" alignment="left" text="Label" textAlignment="left" id="Cr4-ta-gyK">
+                                                    <color key="textColor" red="0.37254901960784315" green="0.55686274509803924" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="20"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <imageView width="30" height="30" alignment="center" image="Normal" id="ziZ-Ef-YTp"/>
                                     </items>
                                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                 </group>
-                                <group width="1" alignment="center" layout="vertical" spacing="0.0" id="gjX-qS-4bZ">
+                                <group width="1" height="42" alignment="center" layout="vertical" spacing="0.0" id="EKJ-Jb-rAI">
                                     <items>
-                                        <label alignment="center" text="Sprint No" textAlignment="center" id="wMA-TE-H2i">
-                                            <color key="textColor" red="0.54509803921568623" green="0.54509803921568623" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
+                                        <label width="133" alignment="left" text="Next Release Date" textAlignment="left" id="0CD-PL-H7R">
+                                            <color key="textColor" red="0.55294117649999996" green="0.55294117649999996" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="12"/>
                                         </label>
-                                        <label alignment="center" text="Label" textAlignment="center" id="Cr4-ta-gyK">
-                                            <color key="textColor" red="0.32519774010000002" green="0.5184338664" blue="0.74405637250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
-                                        </label>
-                                    </items>
-                                </group>
-                                <group width="1" alignment="center" layout="vertical" spacing="0.0" id="EKJ-Jb-rAI">
-                                    <items>
-                                        <label alignment="left" text="Next Release Date" textAlignment="center" id="0CD-PL-H7R">
-                                            <color key="textColor" red="0.5450980392" green="0.5450980392" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="font" type="system" weight="semibold" pointSize="12"/>
-                                        </label>
-                                        <label alignment="left" text="Label" textAlignment="center" id="Nw5-7d-xj1">
-                                            <color key="textColor" red="0.32519774009866032" green="0.5184338663500796" blue="0.74405637254901957" alpha="1" colorSpace="calibratedRGB"/>
-                                            <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                        <label width="131" alignment="left" text="Label" textAlignment="left" id="Nw5-7d-xj1">
+                                            <color key="textColor" red="0.37254901959999998" green="0.5568627451" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="20"/>
                                         </label>
                                     </items>
                                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
@@ -89,9 +86,9 @@
                                         <tableRow identifier="ListTitleRow" id="ic4-n5-khr" customClass="ProjectDetailListTitleRow" customModule="CDM_Go_WatchKit_Extension">
                                             <group key="rootItem" width="1" height="0.0" alignment="left" radius="0.0" id="pFF-La-VUV">
                                                 <items>
-                                                    <label width="1" alignment="left" text="Label" textAlignment="left" id="Kpq-Z5-mjT">
-                                                        <color key="textColor" red="0.2858498423769224" green="0.81801772318776" blue="0.81043346703345776" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                    <label width="1" height="29" alignment="left" text="Label" textAlignment="left" id="Kpq-Z5-mjT">
+                                                        <color key="textColor" red="0.26666666666666666" green="0.6705882352941176" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <fontDescription key="font" type="system" pointSize="16"/>
                                                     </label>
                                                 </items>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -102,11 +99,11 @@
                                             </connections>
                                         </tableRow>
                                         <tableRow identifier="ListItemRow" id="XjA-1i-5BP" customClass="ProjectDetailListItemsRow" customModule="CDM_Go_WatchKit_Extension">
-                                            <group key="rootItem" width="1" height="22" alignment="left" backgroundImage="border401" layout="vertical" radius="0.0" spacing="0.0" id="fAF-jU-hs8">
+                                            <group key="rootItem" width="1" height="0.0" alignment="left" backgroundImage="border401" layout="vertical" radius="0.0" spacing="0.0" id="fAF-jU-hs8">
                                                 <items>
-                                                    <label width="1" alignment="right" text="Label" id="Wwc-tF-rxQ">
+                                                    <label width="1" alignment="right" text="Label" numberOfLines="0" id="Wwc-tF-rxQ">
                                                         <color key="textColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <fontDescription key="font" type="system" weight="thin" pointSize="13"/>
+                                                        <fontDescription key="font" type="system" pointSize="13"/>
                                                     </label>
                                                 </items>
                                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -120,9 +117,9 @@
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </table>
                                 <button width="136" height="19" alignment="left" title="Features" id="2Pe-QC-Y3j">
-                                    <color key="titleColor" red="0.2858498424" green="0.81801772319999999" blue="0.81043346699999996" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.2666666667" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                    <fontDescription key="font" type="system" pointSize="16"/>
                                     <connections>
                                         <action selector="OnFeatureClick" destination="XwY-c1-Nlg" id="84E-Uy-0Qg"/>
                                     </connections>
@@ -133,13 +130,12 @@
                     <connections>
                         <outlet property="nextReleaseDateLabel" destination="Nw5-7d-xj1" id="9yQ-Ek-ixn"/>
                         <outlet property="projectDetailsTable" destination="Rih-YR-l9E" id="QAx-Rh-wAt"/>
-                        <outlet property="projectTitleLabel" destination="u8F-mg-fAZ" id="hin-ff-Ahi"/>
                         <outlet property="sprintNoLabel" destination="Cr4-ta-gyK" id="BaN-3H-fOt"/>
                         <outlet property="statusImageView" destination="ziZ-Ef-YTp" id="aH9-ez-OSe"/>
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="463" y="351"/>
+            <point key="canvasLocation" x="463" y="360.5"/>
         </scene>
         <!--featureController-->
         <scene sceneID="p4v-Bf-gej">
@@ -152,8 +148,8 @@
                                     <group key="rootItem" width="1" height="0.0" alignment="left" radius="0.0" id="Jwy-DZ-kKS">
                                         <items>
                                             <label width="1" alignment="left" text="Label" textAlignment="left" id="1be-Gd-XYC">
-                                                <color key="textColor" red="0.2858498424" green="0.81801772319999999" blue="0.81043346699999996" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                <color key="textColor" red="0.2666666667" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="font" type="system" pointSize="18"/>
                                             </label>
                                         </items>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -164,11 +160,11 @@
                                     </connections>
                                 </tableRow>
                                 <tableRow identifier="ListItemRow" id="SIQ-kg-IHs" customClass="ProjectDetailListItemsRow" customModule="CDM_Go_WatchKit_Extension">
-                                    <group key="rootItem" width="1" height="22" alignment="left" backgroundImage="border401" layout="vertical" radius="0.0" spacing="0.0" id="6OT-RA-eVc">
+                                    <group key="rootItem" width="1" height="0.0" alignment="left" backgroundImage="border401" layout="vertical" radius="0.0" spacing="0.0" id="6OT-RA-eVc">
                                         <items>
-                                            <label width="132" alignment="left" text="Label" numberOfLines="3" id="TwY-Bw-7Ei">
+                                            <label width="1" alignment="left" text="Label" numberOfLines="0" id="TwY-Bw-7Ei">
                                                 <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
+                                                <fontDescription key="font" type="system" pointSize="13"/>
                                             </label>
                                         </items>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
