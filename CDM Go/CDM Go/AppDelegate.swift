@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var isLoggedIn : Bool = false
     var deviceToken :String!
+    var userID:String!
     var projects : AnyObject!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -43,9 +44,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // implemented in your application delegate
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        let userInformationStorage = NSUserDefaults.standardUserDefaults()
+        if let userIDFromService: String = userInformationStorage.objectForKey(InvokeService.USERIDJSONKEY) as? String
+        {
+            self.userID = userIDFromService
+            println("Got token data! \(deviceToken)")
+            InvokeService.updateDeviceToken(deviceToken.description, userId:  self.userID)        }
         
-        println("Got token data! \(deviceToken)")
-    }
+        }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
 

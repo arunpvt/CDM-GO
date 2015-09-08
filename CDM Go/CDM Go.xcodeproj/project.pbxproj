@@ -367,6 +367,7 @@
 				TargetAttributes = {
 					8B69E5091B8F73F900E82C5F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5825QFQ2FV;
 					};
 					8B69E51E1B8F73F900E82C5F = {
 						CreatedOnToolsVersion = 6.4;
@@ -377,6 +378,7 @@
 					};
 					8B69E5411B8F742900E82C5F = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = 5WJTEGADNT;
 					};
 				};
 			};
@@ -628,7 +630,7 @@
 					Go/libpushwizard,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/Work/dev/POC/CDM-GO/CDM Go/CDM Go/Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -646,7 +648,7 @@
 					Go/libpushwizard,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Volumes/Work/dev/POC/CDM-GO/CDM Go/CDM Go/Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

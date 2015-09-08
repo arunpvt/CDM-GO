@@ -20,9 +20,10 @@ static let POSTMETHOD = "POST"
 static let APPROVEDSTATUS = "Approved"
 static let REJECTEDSTATUS = "Rejected"
     
-static let GETUSERURL = "/API/Login"
+static let GETUSERURL = "/Login"
 static let GETPROJECTURL = "/SyncProjects"
 static let NOTIFICATIONURL = "/UpdateNotification"
+static let APNUPDATEURL = "/UpdateDeviceAPN"
 
    
 static func getUser(userName : String , emailAddress : String) -> (String?, String?,Bool)
@@ -82,7 +83,18 @@ static func deserializeJsonObject(anyObj: AnyObject) -> [ Project]
     }
  return projectList
 }
+   
+static func updateDeviceToken(deviceToken : NSString,userId : NSString) {
     
+    var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
+    var deviceTokenString: String = (deviceToken as NSString)
+        .stringByTrimmingCharactersInSet(characterSet)
+        .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
+    
+    var urlWithDetails = NSString(format: "%@?userID=%@&deviceAPN%@",APNUPDATEURL,userId,deviceTokenString)
+    var response = ServiceInvoker.invokeServie(urlWithDetails, method: PUTMETHOD, withObject: nil, isProject: true)
+        
+    }
 static func convertToJsonString(value : AnyObject) -> String?
 {
     let bytes = NSJSONSerialization.dataWithJSONObject(value, options: NSJSONWritingOptions.PrettyPrinted, error: nil)
@@ -108,5 +120,6 @@ static func trimSpacesInString(value :String?) ->String?
         
         
 }
+    
     
 }

@@ -21,8 +21,6 @@ let DELETEMETHOD = "DELETE"
 let SERVER1URL = "http://192.168.20.117:80/CDMGoAdminService"
 let SERVER2URL = "http://192.168.20.117:80/CDMGoProjectService"
 
-let POSTUSER = "/API/Login"
-let UPDATEUSERSTATUS = "/API/UpdateUser"
 
 
 class ServiceInvoker: NSObject{
@@ -100,4 +98,6 @@ class ServiceInvoker: NSObject{
     
     
     }
+   
+    
 }

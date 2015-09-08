@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
    
     @IBOutlet weak var emailIdTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -44,7 +44,8 @@ class ViewController: UIViewController {
         {
             IsUserDataStorageSet = false
         }
-        
+        emailIdTextField.delegate = self;
+        userNameTextField.delegate = self;
        
     }
 
@@ -86,6 +87,7 @@ class ViewController: UIViewController {
                     userInformationStorage.setObject(self.userNameTextField.text, forKey: InvokeService.USERNAMEJSONKEY)
                     userInformationStorage.setObject(self.emailIdTextField.text, forKey:InvokeService.USEREMAILJSONKEY)
                     userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
+                    
                 }
             }
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
@@ -93,6 +95,17 @@ class ViewController: UIViewController {
             
         }
        
+    }
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.view.layer.frame.origin.y = -200
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.view.layer.frame.origin.y = 0
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
     }
     private func showViewBasedOnUserStatus(status: String? ,gotResponse : Bool)
     {
@@ -135,9 +148,9 @@ class ViewController: UIViewController {
     private func applyViewModifications()
     {
         
-        emailIdView.alpha = 0.2
-        userNameView.alpha = 0.2
-        
+        emailIdView.alpha = 0.5
+        userNameView.alpha = 0.5
+        self.navigationController?.navigationBarHidden = true
         
     }
     private func notifyError(textField:UITextField, error:Bool?) ->Bool
@@ -188,5 +201,6 @@ class ViewController: UIViewController {
         let bundleId = NSBundle.mainBundle().bundleIdentifier
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(bundleId!)
     }
+    
 }
 
