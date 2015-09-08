@@ -30,6 +30,7 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         if(responseString != nil)
         {
             projects = InvokeService.deserializeJsonObject(responseString!)
+            appDelegate.projects = responseString
         }
     }
       

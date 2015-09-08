@@ -87,10 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             if(type == "get")
             {
-                let syncProjcet: AnyObject = syncData()!
-                if(syncProjcet.count > 0)
+                if(self.projects != nil)
                 {
-                    reply(["project" : syncProjcet])
+                    reply(["project" : self.projects])
                 }
                 else
                 {

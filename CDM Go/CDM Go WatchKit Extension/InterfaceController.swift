@@ -12,6 +12,7 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
+    @IBOutlet weak var groupRegister: WKInterfaceGroup!
     @IBOutlet weak var projectTable: WKInterfaceTable!
     var projectsModel : [Project]!
     let projects = ["CDM","Driver Seat","Tymetrix"]
@@ -31,8 +32,20 @@ class InterfaceController: WKInterfaceController {
             }
             else
             {
-                self.projectsModel = Project.deserializeJsonObject(userInfo["project"]!)
-                self.loadTableRows()
+                 if let projectDetails: String = userInfo["project"] as? String
+                 {
+                    if (projectDetails  == "Failure")
+                    {
+                       self.groupRegister!.setHidden(false)
+                    }
+                 }
+                else
+                 {
+                    self.groupRegister!.setHidden(true)
+                    self.projectsModel = Project.deserializeJsonObject(userInfo["project"]!)
+                    self.loadTableRows()
+                }
+                
             }
         }
     }
