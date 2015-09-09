@@ -26,7 +26,10 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = true
-        loadProjects()
+        self.activityIndicator.startAnimating()
+        self.view.userInteractionEnabled = false
+        
+        NSThread.detachNewThreadSelector(Selector("loadProjects"), toTarget: self, withObject: nil)
     }
       
     override func didReceiveMemoryWarning() {
@@ -127,23 +130,18 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     {
         var alert = UIAlertView(title: "Projects", message: "Some Error had incurred", delegate: self, cancelButtonTitle: "OK")
     }
+
     func loadProjects()
     {
         var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        dispatch_async(dispatch_get_main_queue(), {
-            
-            self.activityIndicator.startAnimating()
-            self.view.userInteractionEnabled = false
-        })
         let responseData :AnyObject! = appDelegate.syncData()
         self.projects = InvokeService.deserializeJsonObject(responseData)
         dispatch_async(dispatch_get_main_queue(), {
             
             self.activityIndicator.stopAnimating()
             self.view.userInteractionEnabled = true
+            self.projectTableView.reloadData()
         })
-        self.projectTableView.reloadData()
-
     }
 }
 

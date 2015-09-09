@@ -44,20 +44,15 @@ class ViewController: UIViewController,UITextFieldDelegate,UIAlertViewDelegate {
         userInformationStorage = NSUserDefaults.standardUserDefaults()
         if let userName: String = userInformationStorage.objectForKey(InvokeService.USERNAMEJSONKEY) as? String
         {
-            dispatch_async(dispatch_get_main_queue(), {
-                
+            
                 self.activityIndicator.startAnimating()
                 self.view.userInteractionEnabled = false
-            })
+
             
             IsUserDataStorageSet = true
             userNameTextField.text = userName
             emailIdTextField.text = userInformationStorage.objectForKey(InvokeService.USEREMAILJSONKEY) as! String
-            let (userId, userStatus , status) = InvokeService.getUser( userNameTextField.text, emailAddress: emailIdTextField.text)
-            if (userStatus == "Approved") {
-                userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
-            }
-            showViewBasedOnUserStatus(userStatus,gotResponse: status)
+             NSThread.detachNewThreadSelector(Selector("invokeLoginService"), toTarget: self, withObject: nil)
         }
         else
         {
@@ -85,35 +80,38 @@ class ViewController: UIViewController,UITextFieldDelegate,UIAlertViewDelegate {
 
         if(!notifyError(userNameTextField, error: nil) && !notifyError(emailIdTextField, error: nil) && !validateEmailRegex(emailIdTextField))
         {
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                self.activityIndicator.startAnimating()
-                self.view.userInteractionEnabled = false
-            })
-
-            let (userId,userStatus, status) = InvokeService.getUser(self.userNameTextField.text, emailAddress: emailIdTextField.text)
-            if(userId != nil)
-            {
-               
-                if(IsUserDataStorageSet == false)
-                {
-                    userInformationStorage.setObject(self.userNameTextField.text, forKey: InvokeService.USERNAMEJSONKEY)
-                    userInformationStorage.setObject(self.emailIdTextField.text, forKey:InvokeService.USEREMAILJSONKEY)
-                    if (userStatus == "Approved") {
-                        
-                        userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
-                    }
-                    
-                    
-                }
-            }
-           
-            showViewBasedOnUserStatus(userStatus,gotResponse: status)
-           
+            
+            self.activityIndicator.startAnimating()
+            self.view.userInteractionEnabled = false
+            
+            NSThread.detachNewThreadSelector(Selector("invokeLoginService"), toTarget: self, withObject: nil)
 
         }
        
     }
+    
+    func invokeLoginService() {
+        
+        let (userId,userStatus, status) = InvokeService.getUser(self.userNameTextField.text, emailAddress: emailIdTextField.text)
+        if(userId != nil)
+        {
+            
+            if(IsUserDataStorageSet == false)
+            {
+                userInformationStorage.setObject(self.userNameTextField.text, forKey: InvokeService.USERNAMEJSONKEY)
+                userInformationStorage.setObject(self.emailIdTextField.text, forKey:InvokeService.USEREMAILJSONKEY)
+                if (userStatus == "Approved") {
+                    
+                    userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
+                }
+                
+                
+            }
+        }
+        
+        showViewBasedOnUserStatus(userStatus,gotResponse: status)
+    }
+    
     func textFieldDidBeginEditing(textField: UITextField) {
         self.view.layer.frame.origin.y = -200
     }
@@ -131,8 +129,12 @@ class ViewController: UIViewController,UITextFieldDelegate,UIAlertViewDelegate {
         {
             if status == InvokeService.APPROVEDSTATUS
             {
-                moveToNextViewController()
-            
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    self.activityIndicator.stopAnimating()
+                    self.view.userInteractionEnabled = true
+                    self.moveToNextViewController()
+                })
             }
             else if (status == InvokeService.REJECTEDSTATUS)
             {
@@ -150,18 +152,11 @@ class ViewController: UIViewController,UITextFieldDelegate,UIAlertViewDelegate {
     }
     private func moveToNextViewController()
     {
-//        var storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var controller :UIViewController = storyboard!.instantiateViewControllerWithIdentifier("ProjectViewController") as! UIViewController
         self.navigationController?.title = nil
         self.title = nil
         self.navigationController?.pushViewController(controller, animated: true)
     }
-//    private func LoadWaitingForResponseView()
-//    {
-//        WaitingForResponsView.alpha = 0.9
-//        WaitingForResponsView.hidden = false
-//        WaitingResAcitivityIndicator.startAnimating()
-//    }
     
     private func applyViewModifications()
     {

@@ -250,7 +250,7 @@
                                                     <color key="textColor" red="0.67843137254901964" green="0.72549019607843135" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="High Priority-50" translatesAutoresizingMaskIntoConstraints="NO" id="KYT-pR-VQQ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Moderate" translatesAutoresizingMaskIntoConstraints="NO" id="KYT-pR-VQQ">
                                                     <rect key="frame" x="547" y="8" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="HAK-yA-Tcs"/>
@@ -311,7 +311,9 @@
                             <constraint firstAttribute="trailing" secondItem="uMi-so-aPA" secondAttribute="trailing" id="ezR-Xj-hdi"/>
                             <constraint firstAttribute="trailing" secondItem="8fN-Na-Fo3" secondAttribute="trailing" id="fbx-YW-U60"/>
                             <constraint firstItem="IMM-dk-yYQ" firstAttribute="top" secondItem="8fN-Na-Fo3" secondAttribute="bottom" constant="-50" id="hg9-Wi-o9M"/>
+                            <constraint firstItem="fjv-ce-pbs" firstAttribute="leading" secondItem="g8G-g9-mEC" secondAttribute="leading" id="obq-xR-JdH"/>
                             <constraint firstItem="8fN-Na-Fo3" firstAttribute="top" secondItem="yVZ-Lg-hRs" secondAttribute="bottom" constant="50" id="qWD-eP-jdg"/>
+                            <constraint firstAttribute="trailing" secondItem="fjv-ce-pbs" secondAttribute="trailing" id="vRY-6t-1Wz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MDY-TV-K58"/>
@@ -401,7 +403,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="High Priority-50" width="50" height="50"/>
+        <image name="Moderate" width="26" height="26"/>
         <image name="Screen Shot 2015-09-06 at 2.31.56 pm" width="191" height="190"/>
         <image name="bg" width="1242" height="2208"/>
         <image name="email_Icon" width="101" height="103"/>

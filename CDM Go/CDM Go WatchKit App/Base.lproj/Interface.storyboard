@@ -62,7 +62,7 @@
                                     <items>
                                         <group width="103" alignment="left" layout="vertical" spacing="0.0" id="gjX-qS-4bZ">
                                             <items>
-                                                <label width="82" alignment="left" text="Sprint No" textAlignment="left" id="wMA-TE-H2i">
+                                                <label width="82" alignment="left" text="Sprint#" textAlignment="left" id="wMA-TE-H2i">
                                                     <color key="textColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="font" type="system" pointSize="12"/>
                                                 </label>
@@ -126,7 +126,6 @@
                                 </table>
                                 <button width="136" height="19" alignment="left" title="Features" id="2Pe-QC-Y3j">
                                     <color key="titleColor" red="0.2666666667" green="0.6705882353" blue="0.6705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="font" type="system" pointSize="16"/>
                                     <connections>
                                         <action selector="OnFeatureClick" destination="XwY-c1-Nlg" id="84E-Uy-0Qg"/>

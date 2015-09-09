@@ -18,8 +18,8 @@ let POSTMETHOD = "POST"
 let PUTMETHOD = "PUT"
 let DELETEMETHOD = "DELETE"
 
-let SERVER1URL = "http://192.168.20.117:80/CDMGoAdminService"
-let SERVER2URL = "http://192.168.20.117:80/CDMGoProjectService"
+let SERVER1URL = "https://iosapps.thecdmgroup.com/CDMGoAdminService"
+let SERVER2URL = "https://iosapps.thecdmgroup.com/CDMGoProjectService"
 
 
 

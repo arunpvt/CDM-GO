@@ -168,7 +168,7 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
 
         if(index == 0)
         {
-            tableViewCell?.textLabel?.text = "Sprint No"
+            tableViewCell?.textLabel?.text = "Sprint#"
             tableViewCell!.detailTextLabel?.text = String(format: "%d / %d",self.project!.currentSprint , self.project!.totalSprint)
 
         }
