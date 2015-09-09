@@ -300,6 +300,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fjv-ce-pbs" firstAttribute="top" secondItem="yVZ-Lg-hRs" secondAttribute="bottom" id="41F-sa-MOP"/>
                             <constraint firstItem="8fN-Na-Fo3" firstAttribute="leading" secondItem="g8G-g9-mEC" secondAttribute="leading" id="9Ql-UV-Dzk"/>

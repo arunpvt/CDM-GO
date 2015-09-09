@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController,UITextFieldDelegate {
+class ViewController: UIViewController,UITextFieldDelegate,UIAlertViewDelegate {
    
     @IBOutlet weak var emailIdTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
@@ -57,11 +57,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
             if (userStatus == "Approved") {
                 userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                self.activityIndicator.stopAnimating()
-                self.view.userInteractionEnabled = true
-            })
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
         }
         else
@@ -112,11 +107,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
                     
                 }
             }
-            dispatch_async(dispatch_get_main_queue(), {
-                
-                self.activityIndicator.stopAnimating()
-                self.view.userInteractionEnabled = true
-            })
+           
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
            
 
@@ -228,6 +219,15 @@ class ViewController: UIViewController,UITextFieldDelegate {
         let bundleId = NSBundle.mainBundle().bundleIdentifier
         NSUserDefaults.standardUserDefaults().removePersistentDomainForName(bundleId!)
     }
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.activityIndicator.stopAnimating()
+            self.view.userInteractionEnabled = true
+        })
+
+    }
+    
     
 }
 
