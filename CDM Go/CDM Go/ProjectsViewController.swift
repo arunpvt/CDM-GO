@@ -30,7 +30,7 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         let responseData :AnyObject! = appDelegate.syncData()
         self.projects = InvokeService.deserializeJsonObject(responseData)
         activityIndicator.stopAnimating()
-
+        self.projectTableView.reloadData()
     }
       
     override func didReceiveMemoryWarning() {

@@ -10,7 +10,7 @@
             <objects>
                 <controller spacing="10" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="CDM_Go_WatchKit_App" customModuleProvider="target">
                     <items>
-                        <group width="1" alignment="left" hidden="YES" id="Rfh-rs-BgT">
+                        <group width="1" alignment="left" id="Rfh-rs-BgT">
                             <items>
                                 <label width="1" alignment="left" text="Not registered, Please Sign In..." numberOfLines="2" id="cNH-Pa-cSu">
                                     <color key="textColor" red="0.84313725490000002" green="0.81176470590000005" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

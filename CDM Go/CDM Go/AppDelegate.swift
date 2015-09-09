@@ -87,9 +87,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         {
             if(type == "get")
             {
+                let userInformationStorage = NSUserDefaults.standardUserDefaults()
+                self.userID = userInformationStorage.objectForKey(InvokeService.USERIDJSONKEY) as? String
                 if(self.userID != nil)
                 {
-                    self.projects = syncData()                    
+                    self.projects = syncData()
                     reply(["project" : self.projects])
                 }
                 else

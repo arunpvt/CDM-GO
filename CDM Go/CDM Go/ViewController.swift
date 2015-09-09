@@ -52,6 +52,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
             userNameTextField.text = userName
             emailIdTextField.text = userInformationStorage.objectForKey(InvokeService.USEREMAILJSONKEY) as! String
             let (userId, userStatus , status) = InvokeService.getUser( userNameTextField.text, emailAddress: emailIdTextField.text)
+            if (userStatus == "Approved") {
+                userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
+            }
             self.activityIndicator.stopAnimating()
             self.view.userInteractionEnabled = true
             showViewBasedOnUserStatus(userStatus,gotResponse: status)
@@ -92,7 +95,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 {
                     userInformationStorage.setObject(self.userNameTextField.text, forKey: InvokeService.USERNAMEJSONKEY)
                     userInformationStorage.setObject(self.emailIdTextField.text, forKey:InvokeService.USEREMAILJSONKEY)
-                    userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
+                    if (userStatus == "Approved") {
+                        
+                        userInformationStorage.setObject(userId, forKey: InvokeService.USERIDJSONKEY)
+                    }
+                    
                     
                 }
             }
