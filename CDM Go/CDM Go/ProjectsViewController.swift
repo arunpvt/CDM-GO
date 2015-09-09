@@ -103,7 +103,8 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         var storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! ProjectTableCell
         var controller  = storyBoard.instantiateViewControllerWithIdentifier("ProjectDetailController") as! ProjectDetailController
-          controller.project = projects[indexPath.row]
+          controller.projects = projects
+          controller.indexValue = indexPath.row
         self.navigationController?.pushViewController(controller, animated: true)
         
     }

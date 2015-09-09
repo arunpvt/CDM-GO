@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProjectDetailController : UIViewController,UITableViewDataSource,UITableViewDelegate {
+class ProjectDetailController : UIViewController,UITableViewDataSource,UITableViewDelegate ,UIGestureRecognizerDelegate{
     let none = "None"
     
     @IBOutlet weak var projectDetailsTableView: UITableView!
@@ -17,20 +17,20 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
 //    var featuresCompleted :[String]!
 //    var featuresPending :[String]!
 
-    var project : Project?
+    var projects : [Project]!
+    var project : Project!
+    var indexValue : Int!
     
     override func viewDidLoad() {
        
         super.viewDidLoad()
-        self.title = self.project?.projectName
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.projectDetailsTableView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
-        self.view.bringSubviewToFront(projectDetailsTableView)
-            }
+        addGestures()
+        
+           }
    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden = false
-
+        loadProjectFromIndex(indexValue)
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -197,6 +197,53 @@ class ProjectDetailController : UIViewController,UITableViewDataSource,UITableVi
             cellIndex += 1
         }
     }
-    
+    private func addGestures()
+    {
+    let rightSwipe = UISwipeGestureRecognizer(target: self, action: "moveBackWard")
+    rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
+    self.projectDetailsTableView.addGestureRecognizer(rightSwipe)
+    rightSwipe.delegate = self
+
+    let backWardSwipe = UISwipeGestureRecognizer(target: self, action: "moveForward")
+    backWardSwipe.direction = UISwipeGestureRecognizerDirection.Left
+    self.projectDetailsTableView.addGestureRecognizer(backWardSwipe)
+    backWardSwipe.delegate = self
+
+    }
+    func moveForward()
+    {
+     self.indexValue = self.indexValue + 1
+     if(indexValue >= 0 && indexValue < self.projects.count)
+     {
+        loadProjectFromIndex(indexValue)
+        projectDetailsTableView.reloadData()
+     }
+     else
+     {
+         self.indexValue = self.projects.count - 1
+     }
+    }
+    func moveBackWard()
+    {
+        self.indexValue = self.indexValue - 1
+        if(indexValue >= 0)
+        {
+            loadProjectFromIndex(indexValue)
+            projectDetailsTableView.reloadData()
+            
+        }
+        else
+        {
+            self.indexValue = 0
+        }
+    }
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    func loadProjectFromIndex(index:Int!)
+    {
+        self.project = self.projects[index]
+        self.title = self.project.projectName
+    }
    
    }
