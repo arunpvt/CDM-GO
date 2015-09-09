@@ -20,17 +20,13 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
         self.automaticallyAdjustsScrollViewInsets = false
         self.projectTableView.tableFooterView = UIView()
         self.projectTableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-        activityIndicator = AppDelegate.getActivityIndicator(self.view)       // Do any additional setup after loading the view, typically from a nib.
+        activityIndicator = AppDelegate.getActivityIndicator(self.view)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadProjects", name: UIApplicationDidBecomeActiveNotification, object: nil)
     }
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = true
-        var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        activityIndicator.startAnimating()
-        let responseData :AnyObject! = appDelegate.syncData()
-        self.projects = InvokeService.deserializeJsonObject(responseData)
-        activityIndicator.stopAnimating()
-        self.projectTableView.reloadData()
+        loadProjects()
     }
       
     override func didReceiveMemoryWarning() {
@@ -129,6 +125,24 @@ class ProjectsViewController: UIViewController , UITableViewDataSource,UITableVi
     func showErrorAlertMessage()
     {
         var alert = UIAlertView(title: "Projects", message: "Some Error had incurred", delegate: self, cancelButtonTitle: "OK")
+    }
+    func loadProjects()
+    {
+        var appDelegate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.activityIndicator.startAnimating()
+            self.view.userInteractionEnabled = false
+        })
+        let responseData :AnyObject! = appDelegate.syncData()
+        self.projects = InvokeService.deserializeJsonObject(responseData)
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.activityIndicator.stopAnimating()
+            self.view.userInteractionEnabled = true
+        })
+        self.projectTableView.reloadData()
+
     }
 }
 
